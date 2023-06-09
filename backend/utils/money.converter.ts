@@ -1,0 +1,1 @@
+export const moneyConvertion = (amount: number): string => { return `${amount.toFixed(2)} EUR` }
