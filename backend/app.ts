@@ -14,7 +14,9 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 // routes
-// import orderRoutes from './routes/order.routes'
-// app.use('/', orderRoutes)
+import category from './routes/category.routes'
+import product from './routes/product.routes'
+app.use('/category', category)
+app.use('/product', product)
 const PORT = process.env.PORT || 8000
 app.listen(PORT, () => console.log(`👾 Server started on port ${PORT}`))

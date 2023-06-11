@@ -1,12 +1,11 @@
 import { ObjectId } from 'mongoose'
 
 export interface ICategory {
-    _id: ObjectId,
-    ref: string,
+    _id?: ObjectId,
     name: string,
-    description: string,
-    tags: string[],
+    description?: string,
+    tags?: string[],
     thumbnail: string,
-    sort: number,
-    afficher: boolean
+    sort?: number,
+    afficher?: boolean
 }

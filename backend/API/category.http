@@ -1,0 +1,50 @@
+@baseUrl = http://127.0.0.1:8000/category
+
+### Get all category + products
+GET {{baseUrl}}/get
+
+
+### add new category
+POST {{baseUrl}}/new
+Content-Type: application/json
+
+{
+    "name":"Burger",
+    "description":"burger description",
+    "tags":["pain","viande"],
+    "thumbnail":"https://picsum.photos/seed/picsum/200/300",
+    "afficher": true
+}
+
+
+### delete a category
+
+DELETE {{baseUrl}}/remove
+Content-Type: application/json
+
+{
+    "ref":"6485f838a554602ad1d4a6ab"
+}
+
+### edit category
+PUT {{baseUrl}}/edit
+Content-Type: application/json
+
+{
+    "ref":"6485db8cd3f364664111993b",
+    "name":"Burger",
+    "description":"burger description",
+    "tags":["pain","viande"],
+    "thumbnail":"https://picsum.photos/seed/picsum/200/300",
+    "afficher": true
+}
+
+
+### sort category
+PATCH {{baseUrl}}/sort
+Content-Type: application/json
+
+{
+    "ref":"6485d7ffd3f3646641119932",
+    "moveTo":"2"
+}
