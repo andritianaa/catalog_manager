@@ -1,11 +1,11 @@
 import { Document, ObjectId } from "mongoose"
 
-export interface IOption extends Document {
-    _id: ObjectId,
+export interface IOption {
+    _id?: ObjectId,
     name: string,
     price: string,
     default: boolean,
     tags: string[],
-    sort: number,
+    sort?: number,
     afficher: boolean
 }

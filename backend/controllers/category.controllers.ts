@@ -1,4 +1,4 @@
-import { sendResponse, insufficientParameters } from '../utils/response'
+import { sendResponse } from '../utils/response'
 import { Request, Response } from 'express'
 import * as Category from './../services/categories.services'
 import { ICategory } from '../models/categories.model'

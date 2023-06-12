@@ -85,7 +85,12 @@ export const resort = async (_id: string, moveTo: number): Promise<TData> => {
 
 export const get = async (category: string): Promise<TData> => {
     let data = { ...dataI }
-    const product = await ProductModel.find({ category_ref: category }).sort({ sort: 1 })
+    const product = await ProductModel.find({ category_ref: category })
+        .sort({ sort: 1 })
+        .populate({
+            path: 'skus',
+            options: { sort: { sort: 1 } }
+        })
     data = setData(status.success, `Those are product in the category '${category}'`, product)
     return data
 }
