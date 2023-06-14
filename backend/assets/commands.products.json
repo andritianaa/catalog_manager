@@ -1,0 +1,84 @@
+[{
+  "_id": {
+    "$oid": "648a114948097c854860ae96"
+  },
+  "ref": "#123",
+  "name": "Burger",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "description": "burger description",
+  "tags": [
+    "pain",
+    "viande"
+  ],
+  "skus": [
+    {
+      "$oid": "648a12ed23a7679599de986d"
+    }
+  ],
+  "sort": 0,
+  "afficher": true,
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "648a114f48097c854860ae9a"
+  },
+  "ref": "#222",
+  "name": "Burger 2",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "description": "burger description",
+  "tags": [
+    "pain",
+    "viande"
+  ],
+  "skus": [
+    {
+      "$oid": "648a12ed23a7679599de986d"
+    }
+  ],
+  "sort": 2,
+  "afficher": true,
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "648a115548097c854860ae9e"
+  },
+  "ref": "#333",
+  "name": "Burger 3",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "description": "burger description",
+  "tags": [
+    "pain",
+    "viande"
+  ],
+  "skus": [
+    {
+      "$oid": "648a12ed23a7679599de986d"
+    }
+  ],
+  "sort": 1,
+  "afficher": true,
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "648a116448097c854860aea2"
+  },
+  "ref": "#444",
+  "name": "Burger 4",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "description": "burger description",
+  "tags": [
+    "pain",
+    "viande"
+  ],
+  "skus": [
+    {
+      "$oid": "648a12ed23a7679599de986d"
+    }
+  ],
+  "sort": 0,
+  "afficher": true,
+  "__v": 1
+}]

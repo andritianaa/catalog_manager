@@ -1,0 +1,45 @@
+[{
+  "_id": {
+    "$oid": "6489f26861f822346f3bd514"
+  },
+  "ref": "#2345",
+  "name": "Burger",
+  "description": "burger description",
+  "tags": [],
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "sort": 1,
+  "afficher": true,
+  "__v": 1
+},
+{
+  "_id": {
+    "$oid": "6489f5d3ba1f6515f0f42423"
+  },
+  "ref": "#000",
+  "name": "Pizza",
+  "description": "pizza description",
+  "tags": [
+    "fromage",
+    "triangle"
+  ],
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "sort": 0,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6489f8d832e53d5a0a20dbf4"
+  },
+  "ref": "#456",
+  "name": "Sandwich",
+  "description": "sandwich description",
+  "tags": [
+    "salade",
+    "sauce"
+  ],
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "sort": 2,
+  "afficher": true,
+  "__v": 0
+}]

@@ -1,0 +1,69 @@
+[{
+  "_id": {
+    "$oid": "648a0d5032e53d5a0a20dc05"
+  },
+  "ref": "#123",
+  "name": "Burger",
+  "min_selections": 10,
+  "max_selections": 12,
+  "tags": [
+    "pain",
+    "viande"
+  ],
+  "options": [
+    {
+      "$oid": "6489f92132e53d5a0a20dbf9"
+    },
+    {
+      "$oid": "6489f95232e53d5a0a20dbfd"
+    }
+  ],
+  "sort": 0,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648a0ded32e53d5a0a20dc1d"
+  },
+  "ref": "#124",
+  "name": "Option 2",
+  "min_selections": 0,
+  "max_selections": 12,
+  "tags": [
+    "pain",
+    "viande"
+  ],
+  "options": [
+    {
+      "$oid": "6489f92132e53d5a0a20dbf9"
+    },
+    {
+      "$oid": "6489f95232e53d5a0a20dbfd"
+    }
+  ],
+  "sort": 2,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648a0df732e53d5a0a20dc21"
+  },
+  "ref": "#125",
+  "name": "Option 3",
+  "min_selections": 0,
+  "max_selections": 12,
+  "tags": [
+    "pain",
+    "viande"
+  ],
+  "options": [
+    {
+      "$oid": "6489f92132e53d5a0a20dbf9"
+    },
+    {
+      "$oid": "6489f95232e53d5a0a20dbfd"
+    }
+  ],
+  "sort": 0,
+  "__v": 0
+}]

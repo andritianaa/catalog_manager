@@ -1,0 +1,48 @@
+[{
+  "_id": {
+    "$oid": "6489f92132e53d5a0a20dbf9"
+  },
+  "ref": "#123",
+  "name": "Burger",
+  "price": "10.00 EUR",
+  "default": true,
+  "tags": [
+    "pain",
+    "viande"
+  ],
+  "sort": 0,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6489f95232e53d5a0a20dbfd"
+  },
+  "ref": "#111",
+  "name": "Vegan",
+  "price": "15.00 EUR",
+  "default": true,
+  "tags": [
+    "pain",
+    "salade"
+  ],
+  "sort": 1,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6489f97432e53d5a0a20dc01"
+  },
+  "ref": "#333",
+  "name": "maison",
+  "price": "8.50 EUR",
+  "default": true,
+  "tags": [
+    "pain",
+    "salade"
+  ],
+  "sort": 2,
+  "afficher": true,
+  "__v": 0
+}]
