@@ -13,7 +13,7 @@ export const create = async (category: ICategory): Promise<TData> => {
     let data = { ...dataI }
     category.sort = await CategoryModel.count()
     const newCategory = new CategoryModel(category)
-    if (await isRefExist(CategoryModel, category.ref)) {
+    if (!await isRefExist(CategoryModel, category.ref, newCategory._id.toString())) {
         newCategory.save()
         data = setData(status.success, 'Category created successfully', newCategory)
     } else data = setData(status.bad_request, 'Ref already used', {})
@@ -25,11 +25,12 @@ export const edit = async (category: ICategory, _id: string): Promise<TData> => 
     const toEdit = await CategoryModel.findOne({ _id })
     if (toEdit) {
         toEdit.name = category.name || ''
+        toEdit.ref = category.ref || ''
         toEdit.description = category.description || ''
         toEdit.tags = category.tags || []
         toEdit.thumbnail = category.thumbnail || ''
         toEdit.afficher = category.afficher || true
-        if (await isRefExist(CategoryModel, category.ref)) {
+        if (!await isRefExist(CategoryModel, category.ref, _id)) {
             toEdit.save()
             data = setData(status.success, 'Category edited', {})
         } else data = setData(status.bad_request, 'Ref already used', {})
@@ -66,7 +67,7 @@ export const resort = async (_id: string, moveTo: number): Promise<TData> => {
 export const get = (): Promise<TData> => {
     return new Promise((resolve) => {
         let data = { ...dataI }
-        CategoryModel.aggregate([{ $sort: { 'sort': 1 } }]).exec((err, categories) => {
+        CategoryModel.aggregate([{ $sort: { 'sort': -1 } }]).exec((err, categories) => {
             if (err) data = setData(status.internal_server_error, 'Cannot get categories', err)
             else data = setData(status.success, 'Category getted', categories)
             resolve(data)

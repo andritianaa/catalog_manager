@@ -1,5 +1,3 @@
-import { ObjectId } from 'mongoose'
-
 export interface ICategory {
     ref?: string,
     name: string,

@@ -6,6 +6,7 @@ export interface IProduct {
     name: string,
     description: string,
     tags?: string[],
+    thumbnail?: string,
     skus?: ObjectId[],
     sort?: number,
     afficher?: boolean

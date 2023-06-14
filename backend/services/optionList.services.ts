@@ -17,7 +17,7 @@ export const create = async (optionlist: IOptionList): Promise<TData> => {
     else {
         optionlist.sort = await OptionListModel.count()
         const newOptionList = new OptionListModel(optionlist)
-        if (await isRefExist(OptionListModel, optionlist.ref)) {
+        if (!await isRefExist(OptionListModel, optionlist.ref, newOptionList._id.toString())) {
             newOptionList.save()
             data = setData(status.success, 'OptionList created successfully', newOptionList)
         } else data = setData(status.bad_request, 'Ref already used', {})
@@ -39,7 +39,7 @@ export const edit = async (optionlist: IOptionList, _id: string): Promise<TData>
         toEdit.tags = optionlist.tags || []
         toEdit.options = optionlist.options || []
 
-        if (await isRefExist(OptionListModel, optionlist.ref)) {
+        if (!await isRefExist(OptionListModel, optionlist.ref, _id)) {
             toEdit.save()
             data = setData(status.success, 'OptionList edited', {})
         } else data = setData(status.bad_request, 'Ref already used', {})
@@ -76,10 +76,10 @@ export const get = async (): Promise<TData> => {
     let data = { ...dataI }
     try {
         const optionLists = await OptionListModel.find()
-            .sort({ sort: 1 })
+            .sort({ sort: -1 })
             .populate({
                 path: 'options',
-                options: { sort: { sort: 1 } }
+                options: { sort: { sort: -1 } }
             })
         data = setData(status.success, 'OptionList getted', optionLists)
     } catch (err) { data = setData(status.internal_server_error, 'Cannot get optionlists', err) }

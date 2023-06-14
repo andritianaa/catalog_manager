@@ -1,0 +1,11 @@
+### add new category
+POST http://127.0.0.1:8000/sku/new
+Content-Type: application/json
+
+{
+    "price":10,
+    "afficher": true,
+    "option_list_ids":["648a0d5032e53d5a0a20dc05","648a0ded32e53d5a0a20dc1d"],
+    "name":"burger 3",
+    "ref":"#333"
+}

@@ -1,0 +1,8 @@
+### delete a category
+
+DELETE http://127.0.0.1:8000/product/remove
+Content-Type: application/json
+
+{
+    "id":"648a10f748097c854860ae89"
+}

@@ -21,16 +21,15 @@ export const edit = async (req: Request, res: Response) => {
 
 export const remove = async (req: Request, res: Response) => {
     const { id } = req.body
-    if (id) {
-        sendResponse(res, await Category.remove(id))
-    } else res.status(403).send({ message: `id must be provided`, value: {} })
+    if (id) sendResponse(res, await Category.remove(id))
+    else res.status(403).send({ message: `id must be provided`, value: {} })
 }
 export const resort = async (req: Request, res: Response) => {
     const { id, moveTo } = req.body
-    if (id !== undefined && moveTo !== undefined) {
-        let move = parseInt(moveTo)
-        sendResponse(res, await Category.resort(id, move))
-    } else res.status(403).send({ message: `id and moveTo must be provided`, value: {} })
+    if (parseInt(moveTo) != 0) {
+        if (id !== undefined && moveTo !== undefined) sendResponse(res, await Category.resort(id, parseInt(moveTo)))
+        else res.status(403).send({ message: `id and moveTo must be provided`, value: {} })
+    } else res.status(403).send({ message: `moveTo must be > 0`, value: {} })
 }
 
 export const get = async (req: Request, res: Response) => sendResponse(res, await Category.get())

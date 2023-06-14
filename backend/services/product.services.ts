@@ -13,7 +13,7 @@ export const create = async (product: IProduct): Promise<TData> => {
     product.sort = await ProductModel.count({ category_id: product.category_id })
     const newCategory = new ProductModel(product)
 
-    if (await isRefExist(ProductModel, product.ref)) {
+    if (!await isRefExist(ProductModel, product.ref, newCategory._id.toString())) {
         newCategory.save()
         data = setData(status.success, 'Product created successfully', newCategory)
     } else data = setData(status.bad_request, 'Ref already used', {})
@@ -25,13 +25,14 @@ export const edit = async (product: IProduct, _id: string): Promise<TData> => {
     const toEdit = await ProductModel.findOne({ _id })
     if (toEdit) {
         toEdit.category_id = product.category_id
+        toEdit.thumbnail = product.thumbnail || ''
         toEdit.name = product.name || ''
         toEdit.description = product.description || ''
         toEdit.tags = product.tags || []
         toEdit.skus = product.skus || []
         toEdit.afficher = product.afficher || true
         toEdit.ref = product.ref || ''
-        if (await isRefExist(ProductModel, product.ref)) {
+        if (!await isRefExist(ProductModel, product.ref, _id)) {
             toEdit.save()
             data = setData(status.success, 'Product edited', {})
         } else data = setData(status.bad_request, 'Ref already used', {})
@@ -93,10 +94,10 @@ export const resort = async (_id: string, moveTo: number): Promise<TData> => {
 export const get = async (category: string): Promise<TData> => {
     let data = { ...dataI }
     const product = await ProductModel.find({ category_id: category })
-        .sort({ sort: 1 })
+        .sort({ sort: -1 })
         .populate({
             path: 'skus',
-            options: { sort: { sort: 1 } }
+            options: { sort: { sort: -1 } }
         })
     data = setData(status.success, `Those are product in the category '${category}'`, product)
     return data

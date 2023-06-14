@@ -1,0 +1,13 @@
+### edit category
+PUT http://127.0.0.1:8000/option/edit
+Content-Type: application/json
+
+{
+    "price":10,
+    "afficher": true,
+    "defaultValue": true,
+    "tags":["pain","viande"],
+    "name":"Burger",
+    "ref":"#123",
+    "id":"sjeirjweirirher"
+}

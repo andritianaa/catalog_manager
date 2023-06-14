@@ -1,0 +1,8 @@
+### sort category
+PATCH http://127.0.0.1:8000/category/sort
+Content-Type: application/json
+
+{
+    "id":"6489f26861f822346f3bd514",
+    "moveTo":"2"
+}

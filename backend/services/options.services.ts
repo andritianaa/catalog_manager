@@ -14,7 +14,7 @@ export const create = async (option: IOption): Promise<TData> => {
     option.sort = await OptionModel.count()
     const newOption = new OptionModel(option)
 
-    if (await isRefExist(OptionModel, option.ref)) {
+    if (!await isRefExist(OptionModel, option.ref, newOption._id.toString())) {
         newOption.save()
         data = setData(status.success, 'Option created successfully', newOption)
     } else data = setData(status.bad_request, 'Ref already used', {})
@@ -31,7 +31,7 @@ export const edit = async (option: IOption, _id: string): Promise<TData> => {
         toEdit.tags = option.tags || []
         toEdit.afficher = option.afficher || true
         toEdit.ref = option.ref || ''
-        if (await isRefExist(OptionModel, option.ref)) {
+        if (!await isRefExist(OptionModel, option.ref, _id)) {
             toEdit.save()
             data = setData(status.success, 'Option edited', {})
         } else data = setData(status.bad_request, 'Ref already used', {})
@@ -67,7 +67,7 @@ export const resort = async (_id: string, moveTo: number): Promise<TData> => {
 export const get = (): Promise<TData> => {
     return new Promise((resolve) => {
         let data = { ...dataI }
-        OptionModel.aggregate([{ $sort: { 'sort': 1 } }]).exec((err, options) => {
+        OptionModel.aggregate([{ $sort: { 'sort': -1 } }]).exec((err, options) => {
             if (err) data = setData(status.internal_server_error, 'Cannot get options', err)
             else data = setData(status.success, 'Category getted', options)
             resolve(data)

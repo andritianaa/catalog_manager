@@ -7,7 +7,7 @@ const categorySchema = new Schema<ICategory>({
     description: { type: String, require: false },
     tags: [{ type: String }],
     thumbnail: { type: String, require: true },
-    sort: { type: Number, default: 0 },
+    sort: { type: Number, default: 1 },
     afficher: { type: Boolean, default: true }
 })
 

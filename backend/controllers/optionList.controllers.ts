@@ -14,30 +14,27 @@ export const create = async (req: Request, res: Response) => {
 }
 
 export const edit = async (req: Request, res: Response) => {
-    let { name, min_selections, max_selections, tags, options, ref } = req.body
-
-
-    if (name && min_selections && max_selections && ref) {
+    let { name, min_selections, max_selections, tags, options, ref, id } = req.body
+    if (name && min_selections && max_selections && id) {
         min_selections = parseInt(min_selections)
         max_selections = parseInt(max_selections)
         const optionlist: IOptionList = { name, min_selections, max_selections, tags, options, ref }
-        sendResponse(res, await OptionList.edit(optionlist, ref))
-    } else res.status(403).send({ message: `name, min_selections, max_selections and ref must be provided`, value: {} })
+        sendResponse(res, await OptionList.edit(optionlist, id))
+    } else res.status(403).send({ message: `name, min_selections, max_selections and id must be provided`, value: {} })
 }
 
 export const remove = async (req: Request, res: Response) => {
-    const { ref } = req.body
-    if (ref) {
-        sendResponse(res, await OptionList.remove(ref))
-    } else res.status(403).send({ message: `ref must be provided`, value: {} })
+    const { id } = req.body
+    if (id) sendResponse(res, await OptionList.remove(id))
+    else res.status(403).send({ message: `id must be provided`, value: {} })
 }
 
 export const resort = async (req: Request, res: Response) => {
-    const { ref, moveTo } = req.body
-    if (ref !== undefined && moveTo !== undefined) {
-        let move = parseInt(moveTo)
-        sendResponse(res, await OptionList.resort(ref, move))
-    } else res.status(403).send({ message: `ref and moveTo must be provided`, value: {} })
+    const { id, moveTo } = req.body
+    if (parseInt(moveTo) != 0) {
+        if (id !== undefined && moveTo !== undefined) sendResponse(res, await OptionList.resort(id, parseInt(moveTo)))
+        else res.status(403).send({ message: `id and moveTo must be provided`, value: {} })
+    } else res.status(403).send({ message: `moveTo must be > 0`, value: {} })
 }
 
 export const get = async (req: Request, res: Response) => sendResponse(res, await OptionList.get())

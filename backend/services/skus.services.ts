@@ -13,7 +13,7 @@ export const create = async (sku: ISku): Promise<TData> => {
     let data = { ...dataI }
     sku.sort = await SkuModel.count()
     const newSku = new SkuModel(sku)
-    if (await isRefExist(SkuModel, sku.ref)) {
+    if (!await isRefExist(SkuModel, sku.ref, newSku._id.toString())) {
         newSku.save()
         data = setData(status.success, 'Sku created successfully', newSku)
     } else data = setData(status.bad_request, 'Ref already used', {})
@@ -29,7 +29,7 @@ export const edit = async (sku: ISku, _id: string): Promise<TData> => {
         toEdit.afficher = sku.afficher || true
         toEdit.option_list_ids = sku.option_list_ids || []
         toEdit.ref = sku.ref || ''
-        if (await isRefExist(SkuModel, sku.ref)) {
+        if (!await isRefExist(SkuModel, sku.ref, _id)) {
             toEdit.save()
             data = setData(status.success, 'Sku edited', {})
         } else data = setData(status.bad_request, 'Ref already used', {})
@@ -65,10 +65,10 @@ export const resort = async (_id: string, moveTo: number): Promise<TData> => {
 export const get = async (): Promise<TData> => {
     let data = { ...dataI }
     const skus = await SkuModel.find()
-        .sort({ sort: 1 })
+        .sort({ sort: -1 })
         .populate({
             path: 'options',
-            options: { sort: { sort: 1 } }
+            options: { sort: { sort: -1 } }
         })
     data = setData(status.success, `Those are skus`, skus)
     return data

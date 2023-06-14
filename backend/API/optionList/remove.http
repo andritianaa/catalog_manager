@@ -1,0 +1,8 @@
+### delete a category
+
+DELETE http://127.0.0.1:8000/optionList/remove
+Content-Type: application/json
+
+{
+    "id":"648a0d6a32e53d5a0a20dc0c"
+}

@@ -1,0 +1,12 @@
+### add new category
+POST http://127.0.0.1:8000/option/new
+Content-Type: application/json
+
+{
+    "price":8.5,
+    "afficher": true,
+    "defaultValue": true,
+    "tags":["pain","salade"],
+    "name":"maison",
+    "ref":"#333"
+}

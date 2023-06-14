@@ -1,0 +1,13 @@
+### edit category
+PUT http://127.0.0.1:8000/optionList/edit
+Content-Type: application/json
+
+{
+    "id":"648a0d6a32e53d5a0a20dc0c",
+    "name":"Test",
+    "min_selections":1,
+    "max_selections":5,
+    "tags":["pain","viande"],
+    "options":["6485d7c1d3c5a2eb8181e269","6485d7c1d3c5a2eb8181e269"],
+    "ref":"#124"
+}

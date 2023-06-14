@@ -1,0 +1,14 @@
+### add new category
+POST http://127.0.0.1:8000/product/new
+Content-Type: application/json
+
+{
+    "category_id":"6489f5d3ba1f6515f0f42423",
+    "name":"Burger 4",
+    "description":"burger description",
+    "tags":["pain","viande"],
+    "skus":["6485d7c1d3c5a2eb8181e269","6485d7c1d3c5a2eb8181e269"],
+    "afficher": true,
+    "ref":"#444",
+    "thumbnail":"https://picsum.photos/seed/picsum/200/300"
+}

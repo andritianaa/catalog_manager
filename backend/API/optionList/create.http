@@ -1,0 +1,12 @@
+### add new category
+POST http://127.0.0.1:8000/optionList/new
+Content-Type: application/json
+
+{
+    "name":"Option 3",
+    "min_selections":0,
+    "max_selections":12,
+    "tags":["pain","viande"],
+    "options":["6489f92132e53d5a0a20dbf9","6489f95232e53d5a0a20dbfd"],
+    "ref":"#125"
+}

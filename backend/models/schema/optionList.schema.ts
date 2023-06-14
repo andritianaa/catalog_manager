@@ -4,7 +4,7 @@ import mongoose from 'mongoose'
 const list = new Schema<IOptionList>({
     ref: String,
     name: String,
-    min_selections: { type: Number, default: 0 },
+    min_selections: { type: Number, default: 1 },
     max_selections: Number,
     tags: [{ type: String }],
     options: [{ type: mongoose.Types.ObjectId, ref: 'options' }],
