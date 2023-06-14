@@ -4,17 +4,17 @@ import * as Product from '../services/product.services'
 import { IProduct } from '../models/products.model'
 
 export const create = async (req: Request, res: Response) => {
-    const { category_id, name, description, tags, skus, afficher } = req.body
+    const { category_id, name, description, tags, skus, afficher, ref } = req.body
     if (category_id && name) {
-        const product: IProduct = { name, category_id, description, tags, afficher, skus }
+        const product: IProduct = { name, category_id, description, tags, afficher, skus, ref }
         sendResponse(res, await Product.create(product))
     } else res.status(403).send({ message: `name and category_id must be provided`, value: {} })
 }
 
 export const edit = async (req: Request, res: Response) => {
-    const { ref, name, description, tags, skus, afficher } = req.body
+    const { name, description, tags, skus, afficher, ref } = req.body
     if (name) {
-        const product: IProduct = { name, description, tags, afficher, skus }
+        const product: IProduct = { name, description, tags, afficher, skus, ref }
         sendResponse(res, await Product.edit(product, ref))
     } else res.status(403).send({ message: `name and category_id must be provided`, value: {} })
 }

@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongoose'
 
 export interface ISku {
-    ref: string,
+    ref?: string,
     id?: ObjectId,
     name: string,
     price: string,

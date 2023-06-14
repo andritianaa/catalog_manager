@@ -5,10 +5,10 @@ import { IOptionList } from '../models/optionList.model'
 
 
 export const create = async (req: Request, res: Response) => {
-    let { name, min_selections, max_selections, tags, options } = req.body
+    let { name, min_selections, max_selections, tags, options, ref } = req.body
 
     if (name) {
-        const optionlist: IOptionList = { name, min_selections, max_selections, tags, options }
+        const optionlist: IOptionList = { name, min_selections, max_selections, tags, options, ref }
         sendResponse(res, await OptionList.create(optionlist))
     } else res.status(403).send({ message: `name, min_selections and max_selections must be provided`, value: {} })
 }
@@ -20,7 +20,7 @@ export const edit = async (req: Request, res: Response) => {
     if (name && min_selections && max_selections && ref) {
         min_selections = parseInt(min_selections)
         max_selections = parseInt(max_selections)
-        const optionlist: IOptionList = { name, min_selections, max_selections, tags, options }
+        const optionlist: IOptionList = { name, min_selections, max_selections, tags, options, ref }
         sendResponse(res, await OptionList.edit(optionlist, ref))
     } else res.status(403).send({ message: `name, min_selections, max_selections and ref must be provided`, value: {} })
 }
