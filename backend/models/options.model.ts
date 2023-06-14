@@ -1,7 +1,7 @@
 import { Document, ObjectId } from "mongoose"
 
 export interface IOption {
-    _id?: ObjectId,
+    ref?: ObjectId,
     name: string,
     price: string,
     default: boolean,

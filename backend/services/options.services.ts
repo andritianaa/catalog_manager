@@ -17,9 +17,9 @@ export const create = async (option: IOption): Promise<TData> => {
     return data
 }
 
-export const edit = async (option: IOption, _id: string): Promise<TData> => {
+export const edit = async (option: IOption, ref: string): Promise<TData> => {
     let data = { ...dataI }
-    const toEdit = await OptionModel.findOne({ _id })
+    const toEdit = await OptionModel.findOne({ ref })
     if (toEdit) {
         toEdit.name = option.name
         toEdit.price = option.price
@@ -32,9 +32,9 @@ export const edit = async (option: IOption, _id: string): Promise<TData> => {
     return data
 }
 
-export const remove = async (_id: string): Promise<TData> => {
+export const remove = async (ref: string): Promise<TData> => {
     let data = { ...dataI }
-    const toDelete = await OptionModel.findOne({ _id })
+    const toDelete = await OptionModel.findOne({ ref })
     if (toDelete) {
         const currentSort = toDelete.sort
         const options = await OptionModel.find({ sort: { $gt: currentSort } })
@@ -50,9 +50,9 @@ export const remove = async (_id: string): Promise<TData> => {
     return data
 }
 
-export const resort = async (_id: string, moveTo: number): Promise<TData> => {
+export const resort = async (ref: string, moveTo: number): Promise<TData> => {
     let data = { ...dataI }
-    try { data = await sort(OptionModel, moveTo, _id) }
+    try { data = await sort(OptionModel, moveTo, ref) }
     catch (error) { data = setData(status.internal_server_error, 'Cannot resort this option', {}) }
     return data
 }

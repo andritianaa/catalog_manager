@@ -4,11 +4,11 @@ import * as Product from '../services/product.services'
 import { IProduct } from '../models/products.model'
 
 export const create = async (req: Request, res: Response) => {
-    const { category_ref, name, description, tags, skus, afficher } = req.body
-    if (category_ref && name) {
-        const product: IProduct = { name, category_ref, description, tags, afficher, skus }
+    const { category_id, name, description, tags, skus, afficher } = req.body
+    if (category_id && name) {
+        const product: IProduct = { name, category_id, description, tags, afficher, skus }
         sendResponse(res, await Product.create(product))
-    } else res.status(403).send({ message: `name and category_ref must be provided`, value: {} })
+    } else res.status(403).send({ message: `name and category_id must be provided`, value: {} })
 }
 
 export const edit = async (req: Request, res: Response) => {
@@ -16,7 +16,7 @@ export const edit = async (req: Request, res: Response) => {
     if (name) {
         const product: IProduct = { name, description, tags, afficher, skus }
         sendResponse(res, await Product.edit(product, ref))
-    } else res.status(403).send({ message: `name and category_ref must be provided`, value: {} })
+    } else res.status(403).send({ message: `name and category_id must be provided`, value: {} })
 }
 
 export const remove = async (req: Request, res: Response) => {
@@ -35,7 +35,7 @@ export const resort = async (req: Request, res: Response) => {
 }
 
 export const get = async (req: Request, res: Response) => {
-    const { category_ref } = req.body
-    if (category_ref) sendResponse(res, await Product.get(category_ref))
-    else res.status(403).send({ message: `category_ref must be provided`, value: {} })
+    const { category_id } = req.body
+    if (category_id) sendResponse(res, await Product.get(category_id))
+    else res.status(403).send({ message: `category_id must be provided`, value: {} })
 }

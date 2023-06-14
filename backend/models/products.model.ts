@@ -1,7 +1,8 @@
 import { ObjectId } from 'mongoose'
 
 export interface IProduct {
-    category_ref?: ObjectId,
+    ref?: ObjectId,
+    category_id?: ObjectId,
     name: string,
     description: string,
     tags?: string[],

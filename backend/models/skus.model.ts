@@ -1,10 +1,10 @@
 import { ObjectId } from 'mongoose'
 
 export interface ISku {
-    _id?: ObjectId,
+    ref?: ObjectId,
     name: string,
     price: string,
-    option_list_refs: ObjectId[],
+    option_list_ids: ObjectId[],
     sort?: number,
     afficher: boolean
 }

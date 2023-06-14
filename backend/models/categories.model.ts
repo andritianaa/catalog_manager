@@ -1,7 +1,7 @@
 import { ObjectId } from 'mongoose'
 
 export interface ICategory {
-    _id?: ObjectId,
+    ref?: ObjectId,
     name: string,
     description?: string,
     tags?: string[],

@@ -17,23 +17,23 @@ export const create = async (sku: ISku): Promise<TData> => {
     return data
 }
 
-export const edit = async (sku: ISku, _id: string): Promise<TData> => {
+export const edit = async (sku: ISku, ref: string): Promise<TData> => {
     let data = { ...dataI }
-    const toEdit = await SkuModel.findOne({ _id })
+    const toEdit = await SkuModel.findOne({ ref })
     if (toEdit) {
         toEdit.price = sku.price
         toEdit.name = sku.name
         toEdit.afficher = sku.afficher
-        toEdit.option_list_refs = sku.option_list_refs
+        toEdit.option_list_ids = sku.option_list_ids
         toEdit.save()
         data = setData(status.success, 'Sku edited', {})
     } else data = setData(status.not_found, 'This sku does not exist', {})
     return data
 }
 
-export const remove = async (_id: string): Promise<TData> => {
+export const remove = async (ref: string): Promise<TData> => {
     let data = { ...dataI }
-    const toDelete = await SkuModel.findOne({ _id })
+    const toDelete = await SkuModel.findOne({ ref })
     if (toDelete) {
         const currentSort = toDelete.sort
         const skus = await SkuModel.find({ sort: { $gt: currentSort } })
@@ -49,9 +49,9 @@ export const remove = async (_id: string): Promise<TData> => {
     return data
 }
 
-export const resort = async (_id: string, moveTo: number): Promise<TData> => {
+export const resort = async (ref: string, moveTo: number): Promise<TData> => {
     let data = { ...dataI }
-    try { data = await sort(SkuModel, moveTo, _id) }
+    try { data = await sort(SkuModel, moveTo, ref) }
     catch (error) { data = setData(status.internal_server_error, 'Cannot resort this sku', {}) }
     return data
 }

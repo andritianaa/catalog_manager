@@ -17,9 +17,9 @@ export const create = async (category: ICategory): Promise<TData> => {
     return data
 }
 
-export const edit = async (category: ICategory, _id: string): Promise<TData> => {
+export const edit = async (category: ICategory, ref: string): Promise<TData> => {
     let data = { ...dataI }
-    const toEdit = await CategoryModel.findOne({ _id })
+    const toEdit = await CategoryModel.findOne({ ref })
     if (toEdit) {
         toEdit.name = category.name
         toEdit.description = category?.description
@@ -32,9 +32,9 @@ export const edit = async (category: ICategory, _id: string): Promise<TData> => 
     return data
 }
 
-export const remove = async (_id: string): Promise<TData> => {
+export const remove = async (ref: string): Promise<TData> => {
     let data = { ...dataI }
-    const toDelete = await CategoryModel.findOne({ _id })
+    const toDelete = await CategoryModel.findOne({ ref })
     if (toDelete) {
         const currentSort = toDelete.sort
         const categories = await CategoryModel.find({ sort: { $gt: currentSort } })
@@ -50,10 +50,10 @@ export const remove = async (_id: string): Promise<TData> => {
     return data
 }
 
-export const resort = async (_id: string, moveTo: number): Promise<TData> => {
+export const resort = async (ref: string, moveTo: number): Promise<TData> => {
     let data = { ...dataI }
     try {
-        data = await sort(CategoryModel, moveTo, _id)
+        data = await sort(CategoryModel, moveTo, ref)
     } catch (error) { data = setData(status.internal_server_error, 'Cannot resort this category', {}) }
     return data
 }

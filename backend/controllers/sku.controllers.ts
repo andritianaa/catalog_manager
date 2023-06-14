@@ -6,19 +6,19 @@ import { moneyConvertion } from '../utils/money.converter'
 
 
 export const create = async (req: Request, res: Response) => {
-    const { price, afficher, option_list_refs, name } = req.body
+    const { price, afficher, option_list_ids, name } = req.body
 
     if (name && price) {
-        const sku: ISku = { name, price: moneyConvertion(price), afficher, option_list_refs }
+        const sku: ISku = { name, price: moneyConvertion(price), afficher, option_list_ids }
         sendResponse(res, await Sku.create(sku))
     } else res.status(403).send({ message: `name and price must be provided`, value: {} })
 }
 
 export const edit = async (req: Request, res: Response) => {
-    const { price, afficher, option_list_refs, name, ref } = req.body
+    const { price, afficher, option_list_ids, name, ref } = req.body
 
     if (name && price && ref) {
-        const sku: ISku = { name, price: moneyConvertion(price), afficher, option_list_refs }
+        const sku: ISku = { name, price: moneyConvertion(price), afficher, option_list_ids }
         sendResponse(res, await Sku.edit(sku, ref))
     } else res.status(403).send({ message: `name, price and ref must be provided`, value: {} })
 }
