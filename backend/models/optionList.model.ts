@@ -1,7 +1,8 @@
 import { ObjectId } from "mongoose"
 
 export interface IOptionList {
-    ref?: ObjectId,
+    ref: string,
+    id?: ObjectId,
     name: string,
     min_selections?: number,
     max_selections?: number | null,

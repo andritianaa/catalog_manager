@@ -2,11 +2,7 @@ import mongoose, { Schema } from 'mongoose'
 import { IOption } from '../options.model'
 
 const optionSchema: Schema<IOption> = new Schema<IOption>({
-    ref: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'options',
-        default: new mongoose.Types.ObjectId()
-    },
+    ref: String,
     name: String,
     price: { type: String, required: true },
     default: { type: Boolean, default: false },

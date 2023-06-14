@@ -2,11 +2,7 @@ import { Schema } from 'mongoose'
 import { ISku } from '../skus.model'
 import mongoose from 'mongoose'
 const skuSchema = new Schema<ISku>({
-    ref: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'skus',
-        default: new mongoose.Types.ObjectId()
-    },
+    ref: String,
     price: String,
     name: String,
     sort: { type: Number, default: 0 },

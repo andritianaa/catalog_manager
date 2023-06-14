@@ -2,11 +2,7 @@ import { Schema, ObjectId } from 'mongoose'
 import { IOptionList } from '../optionList.model'
 import mongoose from 'mongoose'
 const list = new Schema<IOptionList>({
-    ref: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'OptionList',
-        default: new mongoose.Types.ObjectId()
-    },
+    ref: String,
     name: String,
     min_selections: { type: Number, default: 0 },
     max_selections: Number,

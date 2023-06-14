@@ -2,6 +2,7 @@ import { TData, setData, status } from '../utils/response'
 import { ICategory } from '../models/categories.model'
 import { CategoryModel } from '../models/schema/categories.schema'
 import { sort } from '../utils/sort'
+import { isRefExist } from '../utils/checkRef';
 
 const dataI: TData = {
     message: "Data not yet processed",
@@ -12,29 +13,33 @@ export const create = async (category: ICategory): Promise<TData> => {
     let data = { ...dataI }
     category.sort = await CategoryModel.count()
     const newCategory = new CategoryModel(category)
-    newCategory.save()
-    data = setData(status.success, 'Category created successfully', newCategory)
+    if (await isRefExist(CategoryModel, category.ref)) {
+        newCategory.save()
+        data = setData(status.success, 'Category created successfully', newCategory)
+    } else data = setData(status.bad_request, 'Ref already used', {})
     return data
 }
 
-export const edit = async (category: ICategory, ref: string): Promise<TData> => {
+export const edit = async (category: ICategory, _id: string): Promise<TData> => {
     let data = { ...dataI }
-    const toEdit = await CategoryModel.findOne({ ref })
+    const toEdit = await CategoryModel.findOne({ _id })
     if (toEdit) {
-        toEdit.name = category.name
-        toEdit.description = category?.description
-        toEdit.tags = category?.tags
-        toEdit.thumbnail = category.thumbnail
-        toEdit.afficher = category?.afficher
-        toEdit.save()
-        data = setData(status.success, 'Category edited', {})
+        toEdit.name = category.name || ''
+        toEdit.description = category.description || ''
+        toEdit.tags = category.tags || []
+        toEdit.thumbnail = category.thumbnail || ''
+        toEdit.afficher = category.afficher || true
+        if (await isRefExist(CategoryModel, category.ref)) {
+            toEdit.save()
+            data = setData(status.success, 'Category edited', {})
+        } else data = setData(status.bad_request, 'Ref already used', {})
     } else data = setData(status.not_found, 'This category does not exist', {})
     return data
 }
 
-export const remove = async (ref: string): Promise<TData> => {
+export const remove = async (_id: string): Promise<TData> => {
     let data = { ...dataI }
-    const toDelete = await CategoryModel.findOne({ ref })
+    const toDelete = await CategoryModel.findOne({ _id })
     if (toDelete) {
         const currentSort = toDelete.sort
         const categories = await CategoryModel.find({ sort: { $gt: currentSort } })
@@ -50,10 +55,10 @@ export const remove = async (ref: string): Promise<TData> => {
     return data
 }
 
-export const resort = async (ref: string, moveTo: number): Promise<TData> => {
+export const resort = async (_id: string, moveTo: number): Promise<TData> => {
     let data = { ...dataI }
     try {
-        data = await sort(CategoryModel, moveTo, ref)
+        data = await sort(CategoryModel, moveTo, _id)
     } catch (error) { data = setData(status.internal_server_error, 'Cannot resort this category', {}) }
     return data
 }

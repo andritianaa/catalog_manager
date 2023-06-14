@@ -3,11 +3,7 @@ import { IProduct } from '../products.model'
 import mongoose from 'mongoose'
 
 const productSchema = new Schema<IProduct>({
-    ref: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'products',
-        default: new mongoose.Types.ObjectId()
-    },
+    ref: String,
     category_id: { type: mongoose.Types.ObjectId, ref: 'categories' },
     name: String,
     description: String,
