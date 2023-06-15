@@ -1,37 +1,43 @@
 export const productList = [
     {
         name: 'Tacos et Sandwichs 1',
+        sort: 1,
         products: [
-            { name: 'Tacos à composer 1' },
-            { name: 'Sandwich à composer 1' },
+            { name: 'a1', sort: 1 },
+            { name: 'a2', sort: 2 },
+            { name: 'a3', sort: 3 },
+            { name: 'a4', sort: 4 },
         ]
     },
     {
+        sort: 2,
         name: 'Tacos et Sandwichs 2',
         products: [
-            { name: 'Tacos à composer 2' },
-            { name: 'Sandwich à composer 2' },
+            { name: 'b1', sort: 1 },
+            { name: 'b2', sort: 2 },
+            { name: 'b3', sort: 3 },
+            { name: 'b4', sort: 4 },
         ]
     },
     {
+        sort: 3,
         name: 'Tacos et Sandwichs 3',
         products: [
-            { name: 'Tacos à composer 3' },
-            { name: 'Sandwich à composer 3' },
+            { name: 'c1', sort: 1 },
+            { name: 'c2', sort: 2 },
+            { name: 'c3', sort: 3 },
+            { name: 'c4', sort: 4 },
         ]
     },
     {
         name: 'Tacos et Sandwichs 4',
+        sort: 4,
+
         products: [
-            { name: 'Tacos à composer 4' },
-            { name: 'Sandwich à composer 4' },
-        ]
-    },
-    {
-        name: 'Tacos et Sandwichs 5',
-        products: [
-            { name: 'Tacos à composer 5' },
-            { name: 'Sandwich à composer 5' },
+            { name: 'd1', sort: 1 },
+            { name: 'd2', sort: 2 },
+            { name: 'd3', sort: 3 },
+            { name: 'd4', sort: 4 },
         ]
     },
 ]

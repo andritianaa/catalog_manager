@@ -9,6 +9,8 @@ main {
         overflow-y: auto;
         overflow-x: hidden;
         margin-right: 25px;
+        display: flex;
+        flex-direction: column-reverse;
 
         .category {
             margin-bottom: 16px;

@@ -1,9 +1,17 @@
 <main>
+
     <div id="list">
-        <div *ngFor="let category of data" class="category">
+        <div *ngFor="let category of data" class="category" draggable="true"
+            (dragstart)="onDragStartCategory($event, category)" (dragover)="onDragOver($event)"
+            (drop)="onDrop($event, category)">
+
             <div class="option categoryName" (click)="showCategory()">{{category.name}}</div>
-            <div *ngFor="let product of category.products" class="option product" (click)="showProduct()">
-                {{product.name}}</div>
+
+            <div *ngFor="let product of category.products" class="option product" draggable="true"
+                (dragstart)="onDragStartProduct($event, product, category)" (dragover)="onDragOver($event)"
+                (drop)="onDrop($event, category)">
+                {{product.name}}
+            </div>
         </div>
     </div>
     <div *ngIf="!isCategory" id="product">
