@@ -1,0 +1,73 @@
+<main>
+    <div id="list">
+        <div *ngFor="let category of data" class="category">
+            <div class="option categoryName" (click)="showCategory()">{{category.name}}</div>
+            <div *ngFor="let product of category.products" class="option product" (click)="showProduct()">
+                {{product.name}}</div>
+        </div>
+    </div>
+    <div *ngIf="!isCategory" id="product">
+        <div class="head">
+            <div class="name">Tacos à composer</div>
+            <div class="icons">
+                <button>Show/hide</button>
+                <button>Delete</button>
+                <button>Close</button>
+            </div>
+        </div>
+        <form action="">
+            <label for="ref">Réference du produit</label>
+            <input type="text" id="ref" placeholder="ex: #123">
+
+            <label for="name">Nom</label>
+            <input type="text" id="name" placeholder="Tacos à composer">
+
+            <label for="category_ref">Catégorie</label>
+            <input type="text" id="category_ref" placeholder="Tacos">
+
+            <label for="sku">Skus</label>
+            <input type="text" id="sku" placeholder="Skus">
+
+            <label for="description">Description</label>
+            <textarea rows="4" id="description" placeholder="Tacos à composer"></textarea>
+
+            <label for="tags">Tags</label>
+            <input type="text" id="tags" placeholder="Tags">
+
+            <label for="imageInput">Thumbnail</label>
+            <div class="custom-input">
+                <input type="file" id="imageInput" accept="image/*" (change)="handleFileInput($event)" />
+                <label for="imageInput">
+                    <div class="icon-add"></div>
+                </label>
+            </div>
+        </form>
+    </div>
+    <div *ngIf="isCategory" id="category">
+        <div class="head">
+            <div class="name">Tacos et Sandwichs</div>
+            <div class="icons">
+                <button>Show/hide</button>
+                <button>Delete</button>
+                <button>Close</button>
+            </div>
+        </div>
+        <form action="">
+            <label for="ref">Réference de la catégorie</label>
+            <input type="text" id="ref" placeholder="ex: #123">
+            <label for="name">Nom</label>
+            <input type="text" id="name" placeholder="Tacos à composer">
+            <label for="description">Description</label>
+            <textarea rows="4" id="description" placeholder="Tacos à composer"></textarea>
+            <label for="tags">Tags</label>
+            <input type="text" id="tags" placeholder="Tags">
+            <label for="imageInput">Thumbnail</label>
+            <div class="custom-input">
+                <input type="file" id="imageInput" accept="image/*" (change)="handleFileInput($event)" />
+                <label for="imageInput">
+                    <div class="icon-add"></div>
+                </label>
+            </div>
+        </form>
+    </div>
+</main>
