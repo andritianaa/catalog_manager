@@ -70,7 +70,7 @@ body {
 }
 
 .icon-add {
-    position: relative;
+    z-index: 1;
     width: 30px;
     height: 30px;
     background-color: transparent;
@@ -98,4 +98,62 @@ body {
     }
 
 
+}
+
+.icon-Fermer {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 16px;
+        height: 2px;
+        background-color: #777777;
+    }
+
+    &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+
+
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    margin-top: 8px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+
+    input {
+        padding: 8px;
+        border: var(--border);
+    }
+
+    textarea {
+        padding: 8px;
+        resize: none;
+        border: var(--border);
+
+    }
+}
+
+input[type="checkbox"] {
+    accent-color: #555555;
 }

@@ -1,0 +1,44 @@
+<nav>
+    <div class="contents">
+        <div class="left">
+            <button (click)="toggleNewModal()" class="option">
+                <div class="icon-add"></div>
+                <p>Nouveau produit</p>
+            </button>
+            <button class="option">
+                <p>Supprimer</p>
+            </button>
+        </div>
+        <div class="right">
+            <button class="option">
+                <p>Défaire</p>
+            </button>
+            <button class="option">
+                <p>Refaire</p>
+            </button>
+            <button class="option">
+                <p>Actualiser</p>
+            </button>
+            <button class="save successButton">Enregistrer</button>
+        </div>
+    </div>
+
+
+    <div *ngIf="showModal" class="add">
+        <div class="card">
+            <div class="head">
+                <p>Nouvelle liste d'option</p>
+                <div class="icon-Fermer" (click)="toggleNewModal()"></div>
+
+            </div>
+            <form class="input">
+                <label for="name">Nom</label>
+                <input type="text" id="name">
+            </form>
+            <div class="validation">
+                <button class="green" (click)="toggleNewModal()">Créer</button>
+                <button (click)="toggleNewModal()">Annuler</button>
+            </div>
+        </div>
+    </div>
+</nav>

@@ -1,63 +1,28 @@
+<app-navbar></app-navbar>
 <main>
 
     <div id="list">
-        <div *ngFor="let category of data" class="category" draggable="true"
-            (dragstart)="onDragStartCategory($event, category)" (dragover)="onDragOver($event)"
-            (drop)="onDrop($event, category)">
+        <div *ngFor="let category of data.reverse()" class="category" draggable="true"
+            (dragstart)="onDragStartCategory($event, category)" (dragover)="onDragOverCategory($event)"
+            (drop)="onDropCategory($event, category)">
 
-            <div class="option categoryName" (click)="showCategory()">{{category.name}}</div>
+            <div class="option categoryName {{category._id}}" (click)="showCategory()">{{category.name}}</div>
 
             <div *ngFor="let product of category.products" class="option product" draggable="true"
-                (dragstart)="onDragStartProduct($event, product, category)" (dragover)="onDragOver($event)"
-                (drop)="onDrop($event, category)">
+                (dragstart)="onDragStartProduct($event, product)" (dragover)="onDragOverProduct($event)"
+                (drop)="onDropProduct($event, product)" (click)="showProduct()">
                 {{product.name}}
             </div>
         </div>
     </div>
-    <div *ngIf="!isCategory" id="product">
-        <div class="head">
-            <div class="name">Tacos à composer</div>
-            <div class="icons">
-                <button>Show/hide</button>
-                <button>Delete</button>
-                <button>Close</button>
-            </div>
-        </div>
-        <form action="">
-            <label for="ref">Réference du produit</label>
-            <input type="text" id="ref" placeholder="ex: #123">
 
-            <label for="name">Nom</label>
-            <input type="text" id="name" placeholder="Tacos à composer">
-
-            <label for="category_ref">Catégorie</label>
-            <input type="text" id="category_ref" placeholder="Tacos">
-
-            <label for="sku">Skus</label>
-            <input type="text" id="sku" placeholder="Skus">
-
-            <label for="description">Description</label>
-            <textarea rows="4" id="description" placeholder="Tacos à composer"></textarea>
-
-            <label for="tags">Tags</label>
-            <input type="text" id="tags" placeholder="Tags">
-
-            <label for="imageInput">Thumbnail</label>
-            <div class="custom-input">
-                <input type="file" id="imageInput" accept="image/*" (change)="handleFileInput($event)" />
-                <label for="imageInput">
-                    <div class="icon-add"></div>
-                </label>
-            </div>
-        </form>
-    </div>
-    <div *ngIf="isCategory" id="category">
+    <div *ngIf="isCategory && isDetail" id="category">
         <div class="head">
             <div class="name">Tacos et Sandwichs</div>
             <div class="icons">
                 <button>Show/hide</button>
-                <button>Delete</button>
-                <button>Close</button>
+                <button>Supprimer</button>
+                <button (click)="hideDetail()">Fermer</button>
             </div>
         </div>
         <form action="">
@@ -69,7 +34,7 @@
             <textarea rows="4" id="description" placeholder="Tacos à composer"></textarea>
             <label for="tags">Tags</label>
             <input type="text" id="tags" placeholder="Tags">
-            <label for="imageInput">Thumbnail</label>
+            <label id="thumbnailLabel" for="imageInput">Thumbnail</label>
             <div class="custom-input">
                 <input type="file" id="imageInput" accept="image/*" (change)="handleFileInput($event)" />
                 <label for="imageInput">
@@ -77,5 +42,101 @@
                 </label>
             </div>
         </form>
+    </div>
+
+    <div *ngIf="!isCategory && isDetail" id="product">
+        <div class="head">
+            <div class="name">Nom du produit</div>
+            <div class="icons">
+                <button>Show/hide</button>
+                <button>Supprimer</button>
+                <button (click)="hideDetail()">Fermer</button>
+            </div>
+        </div>
+        <form action="">
+            <label for="ref">Réference du produit</label>
+            <input type="text" id="ref" placeholder="ex: #123">
+
+            <label for="description">Description</label>
+            <textarea rows="4" id="description" placeholder="Tacos à composer"></textarea>
+
+            <label for="imageInput" id="thumbnailLabel">Images</label>
+            <div class="custom-input">
+                <input type="file" id="imageInput" accept="image/*" (change)="handleFileInput($event)" />
+                <label for="imageInput">
+                    <div class="icon-add"></div>
+                </label>
+            </div>
+        </form>
+        <div class="block">
+            <input type="checkbox" name="sku" id="isMultipleSku" checked>
+            <label for="isMultipleSku">Ce produit a plusieurs SKUs, telles ques des tailles ou des couleurs</label>
+        </div>
+        <div class="block skus">
+            <div class="title">
+                <label>Nom de la SKU</label>
+                <label>Prix</label>
+                <label>Code ref</label>
+                <label>Activée</label>
+            </div>
+            <div class="data">
+                <p class="limited">Seul</p>
+                <p class="limited">3.50 EUR</p>
+                <p class="limited">cheese_seul</p>
+                <input type="checkbox" name="" id="" checked>
+            </div>
+            <div class="data">
+                <p class="limited">Menu</p>
+                <p class="limited">5.90 EUR</p>
+                <p class="limited">cheese_menu</p>
+                <input type="checkbox" name="" id="" checked>
+            </div>
+        </div>
+        <div class="block">
+            <span class="icon-add"></span>
+            <label>Nouvelle SKU</label>
+        </div>
+
+        <div class="block optionLists">
+            <p class="headTitle">Liste d'options</p>
+            <div class="lists">
+                <p class="list active">Seul</p>
+                <p class="list">Menu</p>
+            </div>
+        </div>
+
+        <div class="block optionActive">
+            <div class="title">
+                <label class="limited">Nom</label>
+                <label class="limited">Min/Max</label>
+                <label>Options</label>
+            </div>
+            <div class="data">
+                <p class="limited underlined">Ingrédients</p>
+                <p class="limited">0 / illimité</p>
+                <p class="large">Salade, Tomate</p>
+            </div>
+            <div class="data">
+                <p class="limited underlined">Sauce burger</p>
+                <p class="limited">0 / 1</p>
+                <p class="large">Burger, Algérienne, Marocaine, Samouraï, Chili-Thaï</p>
+            </div>
+            <div class="data">
+                <p class="limited underlined">Extras</p>
+                <p class="limited">0 / illimité</p>
+                <p class="large">Raclette, Kiri, Œuf, Boursin</p>
+            </div>
+            <div class="data">
+                <p class="limited underlined">Sauces</p>
+                <p class="limited">1 / 2</p>
+                <p class="large">Algérienne, Marocaine, Samouraï, Chili-Thaï</p>
+            </div>
+        </div>
+
+
+        <div class="block">
+            <span class="icon-add"></span>
+            <label for="isMultipleSku">Associer une liste d'option</label>
+        </div>
     </div>
 </main>

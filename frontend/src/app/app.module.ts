@@ -8,6 +8,7 @@ import { OptionListComponent } from './option-list/option-list.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MenuComponent } from './menu/menu.component';
+import { NavbarOptionComponent } from './navbar-option/navbar-option.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { MenuComponent } from './menu/menu.component';
     OptionListComponent,
     NavbarComponent,
     MenuComponent,
+    NavbarOptionComponent,
   ],
   imports: [
     BrowserModule,

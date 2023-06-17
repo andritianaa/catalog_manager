@@ -1,5 +1,6 @@
 export const productList = [
     {
+        _id: '111',
         name: 'Tacos et Sandwichs 1',
         sort: 1,
         products: [
@@ -10,6 +11,7 @@ export const productList = [
         ]
     },
     {
+        _id: '222',
         sort: 2,
         name: 'Tacos et Sandwichs 2',
         products: [
@@ -20,6 +22,7 @@ export const productList = [
         ]
     },
     {
+        _id: '333',
         sort: 3,
         name: 'Tacos et Sandwichs 3',
         products: [
@@ -31,6 +34,7 @@ export const productList = [
     },
     {
         name: 'Tacos et Sandwichs 4',
+        _id: '444',
         sort: 4,
 
         products: [

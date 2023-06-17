@@ -1,1 +1,47 @@
-<p>option-list works!</p>
+<app-navbar-option></app-navbar-option>
+<main>
+    <div id="list">
+
+        <div *ngFor="let option of data" class="option" draggable="true" (dragstart)="onDragStart($event, option)"
+            (dragover)="onDragOver($event)" (drop)="onDrop($event, option)" (click)="toggleDetail()">
+            <p>{{option.name}} -
+                <span *ngIf="option.used != '0'">Utilisée dans {{option.used}}</span>
+                <span *ngIf="option.used == '0'">Non utilisée</span>
+            </p>
+        </div>
+
+    </div>
+    <div id="detail" *ngIf="isDetail">
+        <div class="head">
+            <div class="name">Tacos et Sandwichs</div>
+            <div class="icons">
+                <button>Supprimer</button>
+                <button (click)="toggleDetail()">Fermer</button>
+            </div>
+        </div>
+        <div class="minMax">
+            <label>Min. sélections</label>
+            <label>Miax. sélections</label>
+            <p>1</p>
+            <p>2</p>
+        </div>
+        <div class="tableau">
+            <div class="head">
+                <label class="large">Nom</label>
+                <label class="short">Prix</label>
+                <label class="large">Code ref</label>
+                <label class="short">Activée</label>
+                <label class="short">Variantes</label>
+                <label class="short">Défaut</label>
+            </div>
+            <div class="data">
+                <p class="large">Algérienne</p>
+                <p class="short">0.00 EUR</p>
+                <p class="large">sauce_algerienne</p>
+                <input class="short" type="checkbox" name="" id="" checked>
+                <p class="short"></p>
+                <input class="short" type="checkbox" name="" id="">
+            </div>
+        </div>
+    </div>
+</main>

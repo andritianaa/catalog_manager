@@ -9,12 +9,18 @@ import { productList } from '../../../fakeData/products';
 export class ProductsComponent {
   @Output() fileSelected = new EventEmitter<File>();
   data = productList
-  isCategory = true
-
+  isCategory = false
+  isDetail = false
+  showCategory() {
+    this.isCategory = true
+    this.isDetail = true
+  }
+  showProduct() {
+    this.isCategory = false
+    this.isDetail = true
+  }
+  hideDetail() { this.isDetail = false }
   handleFileInput(event: any) { this.fileSelected.emit(event.target.files[0]) }
-
-  showCategory() { this.isCategory = true }
-  showProduct() { this.isCategory = false }
 
 
   draggedCategory: any;
@@ -28,44 +34,50 @@ export class ProductsComponent {
     this.draggedCategory = category;
     event.dataTransfer?.setData('text', '');
   }
+  onDragOverCategory(event: DragEvent) {
+    event.preventDefault();
+  }
+  onDropCategory(event: DragEvent, category: any) {
+    event.preventDefault();
+    this.dropSortNumber = this.data.indexOf(this.draggedCategory);
+    const draggedIndex = this.data.indexOf(this.draggedCategory);
+    const droppedIndex = this.data.indexOf(category);
+    if (draggedIndex > -1) {
+      this.data.splice(draggedIndex, 1);
+      this.data.splice(droppedIndex, 0, this.draggedCategory);
+    }
+    this.draggedCategory = null;
+  }
 
-  onDragStartProduct(event: DragEvent, product: any, category: any) {
+
+  onDragStartProduct(event: DragEvent, product: any) {
     this.draggedProduct = product;
-    this.draggedCategory = category;
     event.dataTransfer?.setData('text', '');
   }
-
-  onDragOver(event: DragEvent) {
+  onDragOverProduct(event: DragEvent) {
     event.preventDefault();
   }
-
-  onDrop(event: DragEvent, category: any) {
+  onDropProduct(event: DragEvent, product: any) {
     event.preventDefault();
-    if (this.draggedProduct) {
-      this.dropSortNumber = category.sort;
-      const draggedIndex = this.draggedCategory.products.indexOf(this.draggedProduct);
-      const droppedIndex = category.products.indexOf(this.draggedProduct);
-      if (draggedIndex > -1) {
-        this.draggedCategory.products.splice(draggedIndex, 1);
-      }
-      if (droppedIndex > -1) {
-        category.products.splice(droppedIndex, 0, this.draggedProduct);
-      }
-      this.draggedProduct = null;
-      this.draggedCategory = null;
-    } else if (this.draggedCategory) {
-      this.dropSortNumber = this.data.indexOf(this.draggedCategory);
-      const draggedIndex = this.data.indexOf(this.draggedCategory);
-      const droppedIndex = this.data.indexOf(category);
-      if (draggedIndex > -1) {
-        this.data.splice(draggedIndex, 1);
-      }
-      if (droppedIndex > -1) {
-        this.data.splice(droppedIndex, 0, this.draggedCategory);
-      }
-      this.draggedCategory = null;
-      console.log(this.dropSortNumber);
 
+    let droppedIndex, draggedIndex, dropSortNumber;
+    for (let i = 0; i < this.data.length; i++) {
+      console.log('dropped: ', i);
+
+      dropSortNumber = this.data[i].products.indexOf(this.draggedProduct)
+      draggedIndex = this.data[i].products.indexOf(this.draggedProduct)
+      droppedIndex = this.data[i].products.indexOf(product)
+      console.log('dropSortNumber ', dropSortNumber);
+      console.log('draggedIndex ', draggedIndex);
+      console.log('droppedIndex ', droppedIndex);
+
+      if (draggedIndex > -1 && droppedIndex > -1 && draggedIndex > -1) {
+        console.log('replace');
+        this.data[i].products.splice(draggedIndex, 1);
+        this.data[i].products.splice(droppedIndex, 0, this.draggedProduct);
+        break
+      }
     }
+    this.draggedProduct = null;
   }
 }

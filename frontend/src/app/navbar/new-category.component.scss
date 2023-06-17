@@ -1,0 +1,76 @@
+.add {
+    height: 100vh;
+    width: 100vw;
+    background: rgba(128, 128, 128, 0.411);
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .card {
+        z-index: 11;
+        max-width: 650px;
+        width: calc(100vw - 32px);
+        background: white;
+        border-radius: 4px;
+        padding-bottom: 8px;
+
+        .head {
+            height: 50px;
+            border-bottom: var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-left: 16px;
+            padding-right: 16px;
+
+            p {
+                font-weight: 600;
+            }
+        }
+
+        form {
+            padding: 0 16px;
+
+            label {
+                margin-top: 0;
+            }
+        }
+
+        .validation {
+            display: flex;
+            margin-left: 8px;
+            margin-right: 8px;
+            justify-content: end;
+            margin-top: 24px;
+
+            button {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: none;
+                background: none;
+                cursor: pointer;
+                padding: 8px 16px;
+                margin: 8px;
+                border-radius: 4px;
+                font-size: 16px;
+                transition: ease all .15s;
+                font-weight: 700;
+
+                &.green {
+                    background: var(--green);
+                    color: white;
+
+                }
+
+            }
+        }
+
+
+
+    }
+}
