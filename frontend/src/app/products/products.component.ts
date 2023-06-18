@@ -24,7 +24,11 @@ export class ProductsComponent implements AfterViewInit {
     this.isCategory = false
     this.isDetail = true
   }
-  hideDetail() { this.isDetail = false }
+  hideDetail() {
+    this.isDetail = false
+    const elements = this.elementRef.nativeElement.querySelectorAll('.active')
+    elements.forEach((active: any) => active.classList.remove('active'))
+  }
   hideAddSku() { this.isAddSku = false }
   showAddSku() { this.isAddSku = true }
   onDragStartCategory(event: DragEvent, category: any) {

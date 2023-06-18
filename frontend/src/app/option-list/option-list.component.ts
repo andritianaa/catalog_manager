@@ -19,10 +19,6 @@ export class OptionListComponent implements AfterViewInit {
       used: '2 SKUs'
     },
     {
-      name: 'Viandes',
-      used: 'Tacos à composer Bazooka (Big Tacos)'
-    },
-    {
       name: 'Sauces',
       used: '35 SKUs'
     },
@@ -68,6 +64,8 @@ export class OptionListComponent implements AfterViewInit {
 
   hideDetail() {
     this.isDetail = false;
+    const elements = this.elementRef.nativeElement.querySelectorAll('.active')
+    elements.forEach((active: any) => active.classList.remove('active'))
   }
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {

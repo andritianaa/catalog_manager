@@ -103,6 +103,22 @@ main {
         margin-top: 16px;
         margin-bottom: 16px;
         display: flex;
+
+        &.new {
+            height: 35px;
+            display: flex;
+            justify-content: start;
+            align-items: center;
+            cursor: pointer;
+
+            img {
+                margin-right: 8px;
+            }
+
+            p {
+                margin-bottom: 0;
+            }
+        }
     }
 }
 
