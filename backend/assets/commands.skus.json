@@ -1,56 +1,34 @@
 [{
   "_id": {
-    "$oid": "648a12ed23a7679599de986d"
+    "$oid": "648f2ead33bcaf9df1fef3ca"
   },
-  "ref": "#123",
+  "ref": "seul",
   "price": "10.00 EUR",
-  "name": "burger",
+  "name": "Seul",
   "sort": 0,
   "afficher": true,
   "option_list_ids": [
     {
-      "$oid": "648a0d5032e53d5a0a20dc05"
-    },
-    {
-      "$oid": "648a0ded32e53d5a0a20dc1d"
+      "$oid": "648f2c2a33bcaf9df1fef37f"
     }
   ],
   "__v": 0
 },
 {
   "_id": {
-    "$oid": "648a12f623a7679599de9871"
+    "$oid": "648f2ecb33bcaf9df1fef3ce"
   },
-  "ref": "#222",
+  "ref": "multi",
   "price": "10.00 EUR",
-  "name": "burger 2 ",
+  "name": "Menu",
   "sort": 1,
   "afficher": true,
   "option_list_ids": [
     {
-      "$oid": "648a0d5032e53d5a0a20dc05"
+      "$oid": "648f2e5333bcaf9df1fef3c0"
     },
     {
-      "$oid": "648a0ded32e53d5a0a20dc1d"
-    }
-  ],
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "648a12fe23a7679599de9875"
-  },
-  "ref": "#333",
-  "price": "10.00 EUR",
-  "name": "burger 3",
-  "sort": 2,
-  "afficher": true,
-  "option_list_ids": [
-    {
-      "$oid": "648a0d5032e53d5a0a20dc05"
-    },
-    {
-      "$oid": "648a0ded32e53d5a0a20dc1d"
+      "$oid": "648f2e6833bcaf9df1fef3c4"
     }
   ],
   "__v": 0

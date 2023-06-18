@@ -1,84 +1,240 @@
 [{
   "_id": {
-    "$oid": "648a114948097c854860ae96"
+    "$oid": "648f2f9033bcaf9df1fef3da"
   },
-  "ref": "#123",
-  "name": "Burger",
+  "ref": "Sandwich_composer",
+  "category_id": {
+    "$oid": "648f238553121a213dfe54e3"
+  },
+  "name": "Sandwich à composer",
   "thumbnail": "https://picsum.photos/seed/picsum/200/300",
-  "description": "burger description",
-  "tags": [
-    "pain",
-    "viande"
-  ],
+  "tags": [],
   "skus": [
     {
-      "$oid": "648a12ed23a7679599de986d"
+      "$oid": "648f2ead33bcaf9df1fef3ca"
     }
   ],
   "sort": 0,
   "afficher": true,
-  "__v": 1
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "648a114f48097c854860ae9a"
+    "$oid": "648f2f9f33bcaf9df1fef3de"
   },
-  "ref": "#222",
-  "name": "Burger 2",
+  "ref": "Tacos_composer",
+  "category_id": {
+    "$oid": "648f238553121a213dfe54e3"
+  },
+  "name": "Tacos à composer",
   "thumbnail": "https://picsum.photos/seed/picsum/200/300",
-  "description": "burger description",
-  "tags": [
-    "pain",
-    "viande"
-  ],
+  "tags": [],
   "skus": [
     {
-      "$oid": "648a12ed23a7679599de986d"
-    }
-  ],
-  "sort": 2,
-  "afficher": true,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "648a115548097c854860ae9e"
-  },
-  "ref": "#333",
-  "name": "Burger 3",
-  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
-  "description": "burger description",
-  "tags": [
-    "pain",
-    "viande"
-  ],
-  "skus": [
-    {
-      "$oid": "648a12ed23a7679599de986d"
+      "$oid": "648f2ead33bcaf9df1fef3ca"
     }
   ],
   "sort": 1,
   "afficher": true,
-  "__v": 1
+  "__v": 0
 },
 {
   "_id": {
-    "$oid": "648a116448097c854860aea2"
+    "$oid": "648f2fcd33bcaf9df1fef3e2"
   },
-  "ref": "#444",
-  "name": "Burger 4",
+  "ref": "cheese",
+  "category_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "name": "Cheese",
   "thumbnail": "https://picsum.photos/seed/picsum/200/300",
-  "description": "burger description",
-  "tags": [
-    "pain",
-    "viande"
-  ],
+  "tags": [],
   "skus": [
     {
-      "$oid": "648a12ed23a7679599de986d"
+      "$oid": "648f2ead33bcaf9df1fef3ca"
     }
   ],
   "sort": 0,
   "afficher": true,
-  "__v": 1
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648f2fd533bcaf9df1fef3e6"
+  },
+  "ref": "Chicken",
+  "category_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "name": "Chicken",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "tags": [],
+  "skus": [
+    {
+      "$oid": "648f2ead33bcaf9df1fef3ca"
+    }
+  ],
+  "sort": 1,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648f2fdb33bcaf9df1fef3ea"
+  },
+  "ref": "Fish",
+  "category_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "name": "Fish",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "tags": [],
+  "skus": [
+    {
+      "$oid": "648f2ead33bcaf9df1fef3ca"
+    }
+  ],
+  "sort": 2,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648f2fe233bcaf9df1fef3ee"
+  },
+  "ref": "AMG Burger",
+  "category_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "name": "AMG Burger",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "tags": [],
+  "skus": [
+    {
+      "$oid": "648f2ead33bcaf9df1fef3ca"
+    }
+  ],
+  "sort": 3,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648f2fee33bcaf9df1fef3f2"
+  },
+  "ref": "AMG_Royal",
+  "category_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "name": "AMG Royal",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "tags": [],
+  "skus": [
+    {
+      "$oid": "648f2ead33bcaf9df1fef3ca"
+    }
+  ],
+  "sort": 4,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648f300033bcaf9df1fef3f6"
+  },
+  "ref": "Royal cheese",
+  "category_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "name": "Royal cheese",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "tags": [],
+  "skus": [
+    {
+      "$oid": "648f2ead33bcaf9df1fef3ca"
+    }
+  ],
+  "sort": 5,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648f301133bcaf9df1fef3fa"
+  },
+  "ref": "Triple cheese",
+  "category_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "name": "Triple cheese",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "tags": [],
+  "skus": [
+    {
+      "$oid": "648f2bb933bcaf9df1fef37a"
+    }
+  ],
+  "sort": 6,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648f301933bcaf9df1fef3fe"
+  },
+  "ref": "Royal mix",
+  "category_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "name": "Royal mix",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "tags": [],
+  "skus": [
+    {
+      "$oid": "648f2bb933bcaf9df1fef37a"
+    }
+  ],
+  "sort": 7,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648f302533bcaf9df1fef402"
+  },
+  "ref": "Rosti Beef",
+  "category_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "name": "Rosti Beef",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "tags": [],
+  "skus": [
+    {
+      "$oid": "648f2bb933bcaf9df1fef37a"
+    }
+  ],
+  "sort": 8,
+  "afficher": true,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648f303633bcaf9df1fef406"
+  },
+  "ref": "Rosti chicken",
+  "category_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "name": "Rosti chicken",
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "tags": [],
+  "skus": [
+    {
+      "$oid": "648f2ead33bcaf9df1fef3ca"
+    }
+  ],
+  "sort": 9,
+  "afficher": true,
+  "__v": 0
 }]

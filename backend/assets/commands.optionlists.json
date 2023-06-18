@@ -1,21 +1,48 @@
 [{
   "_id": {
-    "$oid": "648a0d5032e53d5a0a20dc05"
+    "$oid": "648f2c2a33bcaf9df1fef37f"
   },
-  "ref": "#123",
-  "name": "Burger",
-  "min_selections": 10,
-  "max_selections": 12,
-  "tags": [
-    "pain",
-    "viande"
-  ],
+  "ref": "sauces",
+  "name": "Sauces",
+  "min_selections": 1,
+  "max_selections": 2,
+  "tags": [],
   "options": [
     {
-      "$oid": "6489f92132e53d5a0a20dbf9"
+      "$oid": "648f2b4433bcaf9df1fef376"
     },
     {
-      "$oid": "6489f95232e53d5a0a20dbfd"
+      "$oid": "648f2b3c33bcaf9df1fef372"
+    },
+    {
+      "$oid": "648f2b3733bcaf9df1fef36e"
+    },
+    {
+      "$oid": "648f2b2e33bcaf9df1fef36a"
+    },
+    {
+      "$oid": "648f2b2233bcaf9df1fef366"
+    },
+    {
+      "$oid": "648f2b0f33bcaf9df1fef362"
+    },
+    {
+      "$oid": "648f2b0533bcaf9df1fef35e"
+    },
+    {
+      "$oid": "648f2af733bcaf9df1fef35a"
+    },
+    {
+      "$oid": "648f2ae933bcaf9df1fef356"
+    },
+    {
+      "$oid": "648f2ae333bcaf9df1fef352"
+    },
+    {
+      "$oid": "648f2ad433bcaf9df1fef34e"
+    },
+    {
+      "$oid": "648f2ac533bcaf9df1fef34a"
     }
   ],
   "sort": 0,
@@ -23,47 +50,74 @@
 },
 {
   "_id": {
-    "$oid": "648a0ded32e53d5a0a20dc1d"
+    "$oid": "648f2e5333bcaf9df1fef3c0"
   },
-  "ref": "#124",
-  "name": "Option 2",
-  "min_selections": 0,
-  "max_selections": 12,
-  "tags": [
-    "pain",
-    "viande"
-  ],
+  "ref": "viandes_part_1",
+  "name": "Viandes",
+  "min_selections": 1,
+  "max_selections": 3,
+  "tags": [],
   "options": [
     {
-      "$oid": "6489f92132e53d5a0a20dbf9"
+      "$oid": "648f2d5a33bcaf9df1fef3bb"
     },
     {
-      "$oid": "6489f95232e53d5a0a20dbfd"
+      "$oid": "648f2d5133bcaf9df1fef3b7"
+    },
+    {
+      "$oid": "648f2d4433bcaf9df1fef3b3"
+    },
+    {
+      "$oid": "648f2d3a33bcaf9df1fef3af"
+    },
+    {
+      "$oid": "648f2d2f33bcaf9df1fef3ab"
+    },
+    {
+      "$oid": "648f2d2633bcaf9df1fef3a7"
+    },
+    {
+      "$oid": "648f2d1933bcaf9df1fef3a3"
+    },
+    {
+      "$oid": "648f2d1233bcaf9df1fef39f"
+    }
+  ],
+  "sort": 1,
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "648f2e6833bcaf9df1fef3c4"
+  },
+  "ref": "viandes_part_2",
+  "name": "Viandes",
+  "min_selections": 1,
+  "max_selections": 2,
+  "tags": [],
+  "options": [
+    {
+      "$oid": "648f2d0433bcaf9df1fef39b"
+    },
+    {
+      "$oid": "648f2cfa33bcaf9df1fef397"
+    },
+    {
+      "$oid": "648f2cef33bcaf9df1fef393"
+    },
+    {
+      "$oid": "648f2ce633bcaf9df1fef38f"
+    },
+    {
+      "$oid": "648f2cd833bcaf9df1fef38b"
+    },
+    {
+      "$oid": "648f2cc833bcaf9df1fef387"
+    },
+    {
+      "$oid": "648f2cab33bcaf9df1fef383"
     }
   ],
   "sort": 2,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "648a0df732e53d5a0a20dc21"
-  },
-  "ref": "#125",
-  "name": "Option 3",
-  "min_selections": 0,
-  "max_selections": 12,
-  "tags": [
-    "pain",
-    "viande"
-  ],
-  "options": [
-    {
-      "$oid": "6489f92132e53d5a0a20dbf9"
-    },
-    {
-      "$oid": "6489f95232e53d5a0a20dbfd"
-    }
-  ],
-  "sort": 0,
   "__v": 0
 }]

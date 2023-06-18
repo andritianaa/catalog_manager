@@ -1,43 +1,83 @@
 [{
   "_id": {
-    "$oid": "6489f26861f822346f3bd514"
+    "$oid": "648f238553121a213dfe54e3"
   },
-  "ref": "#2345",
-  "name": "Burger",
-  "description": "burger description",
-  "tags": [],
-  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
-  "sort": 1,
-  "afficher": true,
-  "__v": 1
-},
-{
-  "_id": {
-    "$oid": "6489f5d3ba1f6515f0f42423"
-  },
-  "ref": "#000",
-  "name": "Pizza",
-  "description": "pizza description",
-  "tags": [
-    "fromage",
-    "triangle"
-  ],
-  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
-  "sort": 0,
-  "afficher": true,
-  "__v": 0
-},
-{
-  "_id": {
-    "$oid": "6489f8d832e53d5a0a20dbf4"
-  },
-  "ref": "#456",
-  "name": "Sandwich",
-  "description": "sandwich description",
+  "ref": "tacos_sandwichs",
+  "name": "Tacos et Sandwichs",
+  "description": "Catégorie regroupant les tacos et les sandwichs",
   "tags": [
     "salade",
     "sauce"
   ],
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "sort": 0,
+  "afficher": true,
+  "__v": 0,
+  "products": [
+    {
+      "$oid": "648f2f9033bcaf9df1fef3da"
+    },
+    {
+      "$oid": "648f2f9f33bcaf9df1fef3de"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "648f23a353121a213dfe54e7"
+  },
+  "ref": "burgers",
+  "name": "Burgers",
+  "description": "Catégorie regroupant les burgers",
+  "tags": [
+    "salade",
+    "sauce"
+  ],
+  "thumbnail": "https://picsum.photos/seed/picsum/200/300",
+  "sort": 1,
+  "afficher": true,
+  "__v": 0,
+  "products": [
+    {
+      "$oid": "648f2fcd33bcaf9df1fef3e2"
+    },
+    {
+      "$oid": "648f2fd533bcaf9df1fef3e6"
+    },
+    {
+      "$oid": "648f2fdb33bcaf9df1fef3ea"
+    },
+    {
+      "$oid": "648f2fe233bcaf9df1fef3ee"
+    },
+    {
+      "$oid": "648f2fee33bcaf9df1fef3f2"
+    },
+    {
+      "$oid": "648f300033bcaf9df1fef3f6"
+    },
+    {
+      "$oid": "648f301133bcaf9df1fef3fa"
+    },
+    {
+      "$oid": "648f301933bcaf9df1fef3fe"
+    },
+    {
+      "$oid": "648f302533bcaf9df1fef402"
+    },
+    {
+      "$oid": "648f303633bcaf9df1fef406"
+    }
+  ]
+},
+{
+  "_id": {
+    "$oid": "648f2bb933bcaf9df1fef37a"
+  },
+  "ref": "formules",
+  "name": "Formules",
+  "description": "Catégorie regroupant les formules",
+  "tags": [],
   "thumbnail": "https://picsum.photos/seed/picsum/200/300",
   "sort": 2,
   "afficher": true,
