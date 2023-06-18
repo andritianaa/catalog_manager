@@ -3,6 +3,7 @@ import { ICategory } from '../models/categories.model'
 import { CategoryModel } from '../models/schema/categories.schema'
 import { sort } from '../utils/sort'
 import { isRefExist } from '../utils/checkRef';
+import { ProductModel } from '../models/schema/product.schema';
 
 const dataI: TData = {
     message: "Data not yet processed",
@@ -64,13 +65,12 @@ export const resort = async (_id: string, moveTo: number): Promise<TData> => {
     return data
 }
 
-export const get = (): Promise<TData> => {
-    return new Promise((resolve) => {
-        let data = { ...dataI }
-        CategoryModel.aggregate([{ $sort: { 'sort': -1 } }]).exec((err, categories) => {
-            if (err) data = setData(status.internal_server_error, 'Cannot get categories', err)
-            else data = setData(status.success, 'Category getted', categories)
-            resolve(data)
-        })
-    })
+export const get = async (): Promise<TData> => {
+    let data = { ...dataI }
+    try {
+        let categories = await CategoryModel.find().sort({ 'sort': -1 })
+        for (let i = 0; i < categories.length; i++) categories[i].products = await ProductModel.find({ category_id: categories[i] })
+        data = setData(status.success, 'Category getted', categories)
+    } catch (err) { data = setData(status.internal_server_error, 'Cannot get categories', err) }
+    return data
 }

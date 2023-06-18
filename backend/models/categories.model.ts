@@ -1,3 +1,4 @@
+import { IProduct } from './products.model';
 export interface ICategory {
     ref?: string,
     name: string,
@@ -5,5 +6,6 @@ export interface ICategory {
     tags?: string[],
     thumbnail: string,
     sort?: number,
-    afficher?: boolean
+    afficher?: boolean,
+    products?: IProduct[]
 }
