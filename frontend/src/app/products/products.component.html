@@ -92,7 +92,7 @@
                 <input type="checkbox" name="" id="" checked>
             </div>
         </div>
-        <div class="block">
+        <div class="block" (click)="showAddSku()">
             <span class="icon-add"></span>
             <label>Nouvelle SKU</label>
         </div>
@@ -140,3 +140,20 @@
         </div>
     </div>
 </main>
+<div *ngIf="isAddSku" class="add">
+    <div class="card">
+        <div class="head">
+            <p>Nom du produit</p>
+            <div class="icon-Fermer" (click)="hideAddSku()"></div>
+
+        </div>
+        <form class="input">
+            <label for="name">Sélectionner des listes d'option</label>
+            <app-search-select></app-search-select>
+        </form>
+        <div class="validation">
+            <button class="green" (click)="hideAddSku()">Créer</button>
+            <button (click)="hideAddSku()">Annuler</button>
+        </div>
+    </div>
+</div>

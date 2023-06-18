@@ -2,15 +2,18 @@
     <div class="contents">
         <div class="left">
             <button (click)="toggleNewProduct()" class="option">
-                <div class="icon-add"></div>
+                <mat-icon>
+                    book
+                </mat-icon>
                 <p>Nouveau produit</p>
             </button>
             <button class="option" (click)="toggleNewCategory()">
-                <div class="icon-add"></div>
+                <i class="fas fa-plus"></i>
                 <p>Nouvelle catégorie</p>
             </button>
             <button class="option">
-                <p>Supprimer</p>
+                <i class="fas fa-trash"></i>
+
             </button>
         </div>
         <div class="right">

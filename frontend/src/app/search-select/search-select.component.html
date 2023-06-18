@@ -1,0 +1,14 @@
+<main>
+    <mat-form-field>
+        <mat-select [formControl]="websiteMultiCtrl" placeholder="SKUs" [multiple]="true" #multiSelect>
+            <mat-option>
+                <ngx-mat-select-search [formControl]="websiteMultiFilterCtrl"
+                    placeholderLabel="Rechercher"></ngx-mat-select-search>
+            </mat-option>
+            <mat-option *ngFor="let website of websites" [value]="website">
+                {{website.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+</main>
