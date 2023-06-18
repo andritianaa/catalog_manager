@@ -29,7 +29,11 @@ export class ProductsComponent implements AfterViewInit {
   hideAddSku() {
     this.isAddSku = false
   }
-  hideDetail() { this.isDetail = false }
+  hideDetail() {
+    this.isDetail = false
+    const elements = this.elementRef.nativeElement.querySelectorAll('.active')
+    elements.forEach((active: any) => active.classList.remove('active'))
+  }
   handleFileInput(event: any) { this.fileSelected.emit(event.target.files[0]) }
 
 
