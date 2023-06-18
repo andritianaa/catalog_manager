@@ -16,21 +16,6 @@ $frontend-theme: mat.define-light-theme((color: (primary: $frontend-primary,
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;600;700&display=swap');
 
 
-.icon {
-    font-family: 'Material Icons';
-    font-weight: normal;
-    font-style: normal;
-    font-size: 24px;
-    line-height: 1;
-    letter-spacing: normal;
-    text-transform: none;
-    display: inline-block;
-    white-space: nowrap;
-    word-wrap: normal;
-    direction: ltr;
-    -webkit-font-feature-settings: 'liga';
-    -webkit-font-smoothing: antialiased;
-}
 
 :root {
     --primary: #7daf5c;
@@ -101,66 +86,8 @@ body {
 
 }
 
-.icon-add {
-    z-index: 1;
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    transform: rotate(45deg);
-
-    &::before,
-    &::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 16px;
-        height: 2px;
-        background-color: #777777;
-    }
-
-    &::before {
-        transform: translate(-50%, -50%) rotate(45deg);
-    }
-
-    &::after {
-        transform: translate(-50%, -50%) rotate(-45deg);
-    }
 
 
-}
-
-.icon-Fermer {
-    position: relative;
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-
-    &::before,
-    &::after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        width: 16px;
-        height: 2px;
-        background-color: #777777;
-    }
-
-    &::before {
-        transform: translate(-50%, -50%) rotate(45deg);
-    }
-
-    &::after {
-        transform: translate(-50%, -50%) rotate(-45deg);
-    }
-
-
-}
 
 label {
     font-size: 14px;
@@ -206,4 +133,24 @@ body {
 .mat-primary .mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
     color: #6db24f !important;
     border-color: #6db24f !important;
+}
+
+img {
+    height: 20px !important;
+    width: 20px !important;
+    min-height: 20px !important;
+    min-width: 20px !important;
+    cursor: pointer;
+    margin-right: 8px;
+}
+
+.centerize {
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    p {
+        margin-bottom: 0;
+    }
 }

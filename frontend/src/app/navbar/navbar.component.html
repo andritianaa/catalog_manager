@@ -1,30 +1,34 @@
 <nav>
     <div class="contents">
         <div class="left">
-            <button (click)="toggleNewProduct()" class="option">
-                <mat-icon>
-                    book
-                </mat-icon>
+            <button (click)="toggleNewProduct()" class="option centerize">
+                <img src="/assets/icons/add.svg" alt="">
                 <p>Nouveau produit</p>
             </button>
-            <button class="option" (click)="toggleNewCategory()">
-                <i class="fas fa-plus"></i>
+            <button class="option centerize" (click)="toggleNewCategory()">
+                <img src="/assets/icons/add.svg" alt="">
                 <p>Nouvelle catégorie</p>
             </button>
-            <button class="option">
-                <i class="fas fa-trash"></i>
+            <button class="option centerize">
+                <img src="/assets/icons/trash.svg" alt="">
+                <p>Supprimer</p>
 
             </button>
         </div>
         <div class="right">
-            <button class="option">
+            <button class="option centerize">
+                <img src="/assets/icons/undo.svg" alt="">
                 <p>Défaire</p>
+
             </button>
-            <button class="option">
+            <button class="option centerize">
+                <img src="/assets/icons/redo.svg" alt="">
                 <p>Refaire</p>
+
             </button>
-            <button class="option">
-                <p>Actualiser</p>
+            <button class="option centerize">
+                <img src="/assets/icons/refresh.svg" alt="">
+
             </button>
             <button class="save successButton">Enregistrer</button>
         </div>
@@ -34,8 +38,7 @@
         <div class="card">
             <div class="head">
                 <p>Nouveau produit</p>
-                <div class="icon-Fermer" (click)="toggleNewProduct()"></div>
-
+                <img src="/assets/icons/close.svg" (click)="toggleNewProduct()" alt="">
             </div>
             <form class="input">
                 <label for="name">Nom</label>
@@ -51,7 +54,7 @@
         <div class="card">
             <div class="head">
                 <p>Nouvelle catégorie</p>
-                <div class="icon-Fermer" (click)="toggleNewCategory()"></div>
+                <img src="/assets/icons/close.svg" (click)="toggleNewCategory()" alt="">
 
             </div>
             <form class="input">

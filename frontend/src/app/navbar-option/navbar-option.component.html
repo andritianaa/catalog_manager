@@ -1,23 +1,26 @@
 <nav>
     <div class="contents">
         <div class="left">
-            <button (click)="toggleNewModal()" class="option">
-                <div class="icon-add"></div>
+            <button (click)="toggleNewModal()" class="option centerize">
+                <img src="/assets/icons/add.svg" alt="">
                 <p>Nouveau produit</p>
             </button>
-            <button class="option">
+            <button class="option centerize">
+                <img src="/assets/icons/trash.svg" alt="">
                 <p>Supprimer</p>
             </button>
         </div>
         <div class="right">
-            <button class="option">
+            <button class="option centerize">
+                <img src="/assets/icons/undo.svg" alt="">
                 <p>Défaire</p>
             </button>
-            <button class="option">
+            <button class="option centerize">
+                <img src="/assets/icons/redo.svg" alt="">
                 <p>Refaire</p>
             </button>
-            <button class="option">
-                <p>Actualiser</p>
+            <button class="option centerize">
+                <img src="/assets/icons/refresh.svg" alt="">
             </button>
             <button class="save successButton">Enregistrer</button>
         </div>
@@ -28,7 +31,7 @@
         <div class="card">
             <div class="head">
                 <p>Nouvelle liste d'option</p>
-                <div class="icon-Fermer" (click)="toggleNewModal()"></div>
+                <img src="/assets/icons/close.svg" (click)="toggleNewModal()" alt="">
 
             </div>
             <form class="input">

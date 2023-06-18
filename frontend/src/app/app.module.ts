@@ -19,6 +19,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { SearchSelectComponent } from './search-select/search-select.component';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { IconComponent } from './icon/icon.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +30,7 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MenuComponent,
     NavbarOptionComponent,
     SearchSelectComponent,
+    IconComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +44,9 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
     MatButtonModule,
     MatFormFieldModule,
     NgxMatSelectSearchModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatIconModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
