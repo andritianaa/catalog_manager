@@ -23,8 +23,11 @@ main {
 
             &.active {
                 background-color: var(--green);
-                color: white;
-                font-weight: 600;
+
+                p,
+                span {
+                    color: white !important;
+                }
             }
 
             span {

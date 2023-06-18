@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-option-list',
   templateUrl: './option-list.component.html',
   styleUrls: ['./option-list.component.scss']
 })
-export class OptionListComponent {
+export class OptionListComponent implements AfterViewInit {
   dragged: any;
   dropSortNumber!: number;
 
@@ -55,8 +55,26 @@ export class OptionListComponent {
     this.dragged = null;
   }
 
-  isDetail = true
-  toggleDetail() {
-    this.isDetail = !this.isDetail;
+  isDetail = false
+  showDetail(element: HTMLElement) {
+    this.isDetail = true;
+    const elements = this.elementRef.nativeElement.querySelectorAll('.option');
+    elements.forEach((el: any) => {
+      el.classList.remove('active');
+    });
+    element.classList.add('active');
+  }
+
+
+  hideDetail() {
+    this.isDetail = false;
+  }
+
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    this.dropSortNumber = 0;
+  }
+
+  ngAfterViewInit(): void {
+
   }
 }

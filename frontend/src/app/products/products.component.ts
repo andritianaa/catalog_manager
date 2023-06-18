@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
 import { productList } from '../../../fakeData/products';
 
 @Component({
@@ -6,7 +6,7 @@ import { productList } from '../../../fakeData/products';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent {
+export class ProductsComponent implements AfterViewInit {
   @Output() fileSelected = new EventEmitter<File>();
   data = productList
   isCategory = false
@@ -27,9 +27,7 @@ export class ProductsComponent {
   draggedProduct: any;
   dropSortNumber!: number;
 
-  constructor() {
-    this.dropSortNumber = 0;
-  }
+
   onDragStartCategory(event: DragEvent, category: any) {
     this.draggedCategory = category;
     event.dataTransfer?.setData('text', '');
@@ -80,4 +78,19 @@ export class ProductsComponent {
     }
     this.draggedProduct = null;
   }
+
+  constructor(private elementRef: ElementRef, private renderer: Renderer2) {
+    this.dropSortNumber = 0;
+  }
+
+  ngAfterViewInit(): void {
+    const elements = this.elementRef.nativeElement.querySelectorAll('.option');
+    for (let i = 0; i < elements.length; i++) {
+      this.renderer.listen(elements[i], 'click', (event) => {
+        this.elementRef.nativeElement.querySelectorAll('.active').forEach((active: any) => active.classList.remove('active'));
+        event.target.classList.add('active')
+      });
+    }
+  }
+
 }

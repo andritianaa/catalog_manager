@@ -2,8 +2,9 @@
 <main>
     <div id="list">
 
-        <div *ngFor="let option of data" class="option" draggable="true" (dragstart)="onDragStart($event, option)"
-            (dragover)="onDragOver($event)" (drop)="onDrop($event, option)" (click)="toggleDetail()">
+        <div *ngFor="let option of data" class="option" draggable="true" #optionDiv
+            (dragstart)="onDragStart($event, option)" (dragover)="onDragOver($event)" (drop)="onDrop($event, option)"
+            (click)="showDetail(optionDiv)">
             <p>{{option.name}} -
                 <span *ngIf="option.used != '0'">Utilisée dans {{option.used}}</span>
                 <span *ngIf="option.used == '0'">Non utilisée</span>
@@ -16,7 +17,7 @@
             <div class="name">Tacos et Sandwichs</div>
             <div class="icons">
                 <button>Supprimer</button>
-                <button (click)="toggleDetail()">Fermer</button>
+                <button (click)="hideDetail()">Fermer</button>
             </div>
         </div>
         <div class="minMax">
