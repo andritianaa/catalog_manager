@@ -14,7 +14,7 @@
     </div>
     <div id="detail" *ngIf="isDetail">
         <div class="head">
-            <div class="name">Tacos et Sandwichs</div>
+            <div class="name">{{displayList.name}}</div>
             <div class="icons">
                 <button><img src="/assets/icons/trash.svg" alt=""></button>
                 <button (click)="hideDetail()"><img src="/assets/icons/close.svg" alt=""></button>
