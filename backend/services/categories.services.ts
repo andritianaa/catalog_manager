@@ -69,7 +69,21 @@ export const get = async (): Promise<TData> => {
     let data = { ...dataI }
     try {
         let categories = await CategoryModel.find().sort({ 'sort': -1 })
-        for (let i = 0; i < categories.length; i++) categories[i].products = await ProductModel.find({ category_id: categories[i] })
+        for (let i = 0; i < categories.length; i++)
+            categories[i].products = await ProductModel.find({ category_id: categories[i] })
+                .sort({ 'sort': -1 })
+                .populate({
+                    path: 'skus',
+                    options: { sort: { sort: -1 } }
+                })
+                .populate({
+                    path: 'skus.option_list_ids',
+                    options: { sort: { sort: -1 } }
+                })
+                .populate({
+                    path: 'skus.option_list_ids.options',
+                    options: { sort: { sort: -1 } }
+                })
         data = setData(status.success, 'Category getted', categories)
     } catch (err) { data = setData(status.internal_server_error, 'Cannot get categories', err) }
     return data
