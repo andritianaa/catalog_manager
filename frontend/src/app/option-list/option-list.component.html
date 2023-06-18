@@ -4,10 +4,10 @@
 
         <div *ngFor="let option of data" class="option" draggable="true" #optionDiv
             (dragstart)="onDragStart($event, option)" (dragover)="onDragOver($event)" (drop)="onDrop($event, option)"
-            (click)="showDetail(optionDiv)">
-            <p>{{option.name}} -
-                <span *ngIf="option.used != '0'">Utilisée dans {{option.used}}</span>
-                <span *ngIf="option.used == '0'">Non utilisée</span>
+            (click)="showDetail(optionDiv, option)">
+            <p>{{option.name}}
+                <!-- <span *ngIf="option.used != '0'">Utilisée dans {{option.used}}</span>
+                <span *ngIf="option.used == '0'">Non utilisée</span> -->
             </p>
         </div>
 
@@ -23,8 +23,8 @@
         <div class="minMax">
             <label>Min. sélections</label>
             <label>Miax. sélections</label>
-            <p>1</p>
-            <p>2</p>
+            <p>{{displayList.min_selections}}</p>
+            <p>{{displayList.max_selections}}</p>
         </div>
         <div class="tableau">
             <div class="head">
@@ -35,13 +35,13 @@
                 <label class="short">Variantes</label>
                 <label class="short">Défaut</label>
             </div>
-            <div class="data">
-                <p class="large">Algérienne</p>
-                <p class="short">0.00 EUR</p>
-                <p class="large">sauce_algerienne</p>
-                <input class="short" type="checkbox" name="" id="" checked>
+            <div class="data" *ngFor="let option of displayList.options">
+                <p class="large">{{option.name}}</p>
+                <p class="short">{{option.price}}</p>
+                <p class="large">{{option.ref}}</p>
+                <input class="short" type="checkbox" name="" id="" [checked]="option.afficher">
                 <p class="short"></p>
-                <input class="short" type="checkbox" name="" id="">
+                <input class="short" type="checkbox" name="" id="" [checked]="option.default">
             </div>
         </div>
     </div>

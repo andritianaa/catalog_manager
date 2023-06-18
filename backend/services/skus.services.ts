@@ -67,8 +67,12 @@ export const get = async (): Promise<TData> => {
     const skus = await SkuModel.find()
         .sort({ sort: -1 })
         .populate({
-            path: 'options',
-            options: { sort: { sort: -1 } }
+            path: 'option_list_ids',
+            options: { sort: { sort: -1 } },
+            populate: {
+                path: 'options',
+                options: { sort: { sort: -1 } }
+            }
         })
     data = setData(status.success, `Those are skus`, skus)
     return data

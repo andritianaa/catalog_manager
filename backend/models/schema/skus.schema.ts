@@ -7,7 +7,7 @@ const skuSchema = new Schema<ISku>({
     name: String,
     sort: { type: Number, default: 1 },
     afficher: { type: Boolean, default: true },
-    option_list_ids: [{ type: mongoose.Types.ObjectId, ref: 'options' }]
+    option_list_ids: [{ type: mongoose.Types.ObjectId, ref: 'OptionList' }]
 })
 
 export const SkuModel = mongoose.model('skus', skuSchema)

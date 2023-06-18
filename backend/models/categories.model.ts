@@ -1,4 +1,4 @@
-import { IProduct } from './products.model';
+import { ObjectId } from 'mongoose'
 export interface ICategory {
     ref?: string,
     name: string,
@@ -7,5 +7,5 @@ export interface ICategory {
     thumbnail: string,
     sort?: number,
     afficher?: boolean,
-    products?: IProduct[]
+    products?: any[]
 }

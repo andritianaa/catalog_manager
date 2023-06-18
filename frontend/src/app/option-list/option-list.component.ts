@@ -1,4 +1,6 @@
 import { Component, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
+import { get_optionList } from '../../../fakeData/optionList';
+import { IOption, IOptionList } from '../../utils/types';
 
 @Component({
   selector: 'app-option-list',
@@ -9,29 +11,20 @@ export class OptionListComponent implements AfterViewInit {
   dragged: any;
   dropSortNumber!: number;
 
-  data = [
-    {
-      name: 'Viandes',
-      used: '3 SKUs'
-    },
-    {
-      name: 'Viandes',
-      used: '2 SKUs'
-    },
-    {
-      name: 'Sauces',
-      used: '35 SKUs'
-    },
-    {
-      name: 'Crudités',
-      used: '6 SKUs'
-    },
-    {
-      name: 'Boisson',
-      used: '0'
+  data = get_optionList
 
-    },
-  ]
+  displayList: IOptionList = {
+    ref: "",
+    name: "",
+    min_selections: 0,
+    max_selections: 0,
+    tags: [],
+    options: [],
+    sort: 0
+  }
+
+
+
   onDragStart(event: DragEvent, category: any) {
     this.dragged = category;
     event.dataTransfer?.setData('text', '');
@@ -52,7 +45,8 @@ export class OptionListComponent implements AfterViewInit {
   }
 
   isDetail = false
-  showDetail(element: HTMLElement) {
+  showDetail(element: HTMLElement, list: IOptionList) {
+    this.displayList = list
     this.isDetail = true;
     const elements = this.elementRef.nativeElement.querySelectorAll('.option');
     elements.forEach((el: any) => {

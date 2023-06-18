@@ -158,3 +158,10 @@ img {
         margin-bottom: 0;
     }
 }
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    max-width: 16px !important;
+    max-height: 16px !important;
+}

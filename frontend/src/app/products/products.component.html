@@ -6,11 +6,11 @@
             (dragstart)="onDragStartCategory($event, category)" (dragover)="onDragOverCategory($event)"
             (drop)="onDropCategory($event, category)">
 
-            <div class="option categoryName {{category._id}}" (click)="showCategory()">{{category.name}}</div>
+            <div class="option categoryName {{category._id}}" (click)="showCategory(category)">{{category.name}}</div>
 
             <div *ngFor="let product of category.products" class="option product" draggable="true"
                 (dragstart)="onDragStartProduct($event, product)" (dragover)="onDragOverProduct($event)"
-                (drop)="onDropProduct($event, product)" (click)="showProduct()">
+                (drop)="onDropProduct($event, product)" (click)="showProduct(product)">
                 {{product.name}}
             </div>
         </div>
@@ -18,7 +18,7 @@
 
     <div *ngIf="isCategory && isDetail" id="category">
         <div class="head">
-            <div class="name">Tacos et Sandwichs</div>
+            <div class="name">{{displayCategory.name}}</div>
             <div class="icons">
                 <button> <img src="/assets/icons/eye.svg" alt="">
                 </button>
@@ -30,13 +30,13 @@
         </div>
         <form action="">
             <label for="ref">Réference de la catégorie</label>
-            <input type="text" id="ref" placeholder="ex: #123">
+            <input type="text" id="ref" placeholder="ex: #123" [value]="displayCategory.ref">
             <label for="name">Nom</label>
-            <input type="text" id="name" placeholder="Tacos à composer">
+            <input type="text" id="name" placeholder="Tacos à composer" [value]="displayCategory.name">
             <label for="description">Description</label>
-            <textarea rows="4" id="description" placeholder="Tacos à composer"></textarea>
-            <label for="tags">Tags</label>
-            <input type="text" id="tags" placeholder="Tags">
+            <textarea rows="4" id="description" placeholder="Tacos à composer"
+                [value]="displayCategory.description"></textarea>
+
             <label id="thumbnailLabel" for="imageInput">Thumbnail</label>
             <div class="custom-input">
                 <input type="file" id="imageInput" accept="image/*" (change)="handleFileInput($event)" />
@@ -61,10 +61,11 @@
         </div>
         <form action="">
             <label for="ref">Réference du produit</label>
-            <input type="text" id="ref" placeholder="ex: #123">
+            <input type="text" id="ref" placeholder="ex: #123" [value]="displayProduct.ref">
 
             <label for="description">Description</label>
-            <textarea rows="4" id="description" placeholder="Tacos à composer"></textarea>
+            <textarea rows="4" id="description" placeholder="Tacos à composer"
+                [value]="displayProduct.description"></textarea>
 
             <label for="imageInput" id="thumbnailLabel">Images</label>
             <div class="custom-input">
@@ -86,18 +87,13 @@
                 <label>Code ref</label>
                 <label>Activée</label>
             </div>
-            <div class="data">
-                <p class="limited">Seul</p>
-                <p class="limited">3.50 EUR</p>
-                <p class="limited">cheese_seul</p>
-                <input type="checkbox" name="" id="" checked>
+            <div class="data" *ngFor="let sku of displayProduct.skus">
+                <p class="limited">{{sku.name}}</p>
+                <p class="limited">{{sku.price}}</p>
+                <p class="limited">{{sku.ref}}</p>
+                <input type="checkbox" name="" id="" [checked]="sku.afficher">
             </div>
-            <div class="data">
-                <p class="limited">Menu</p>
-                <p class="limited">5.90 EUR</p>
-                <p class="limited">cheese_menu</p>
-                <input type="checkbox" name="" id="" checked>
-            </div>
+
         </div>
         <div class="block new">
             <img src="/assets/icons/add.svg" alt="">
@@ -105,39 +101,27 @@
             <p>Nouvelle SKU</p>
         </div>
 
-        <div class="block optionLists">
+        <div class="block optionLists" *ngIf="displaySku.option_list_ids.length">
             <p class="headTitle">Liste d'options</p>
             <div class="lists">
-                <p class="list active">Seul</p>
-                <p class="list">Menu</p>
+                <p class="list" *ngFor="let sku of displayProduct.skus">{{sku.name}}</p>
             </div>
         </div>
 
-        <div class="block optionActive">
+        <div *ngIf="displaySku.option_list_ids.length" class="block optionActive">
             <div class="title">
                 <label class="limited">Nom</label>
                 <label class="limited">Min/Max</label>
                 <label>Options</label>
             </div>
-            <div class="data">
-                <p class="limited underlined">Ingrédients</p>
-                <p class="limited">0 / illimité</p>
-                <p class="large">Salade, Tomate</p>
-            </div>
-            <div class="data">
-                <p class="limited underlined">Sauce burger</p>
-                <p class="limited">0 / 1</p>
-                <p class="large">Burger, Algérienne, Marocaine, Samouraï, Chili-Thaï</p>
-            </div>
-            <div class="data">
-                <p class="limited underlined">Extras</p>
-                <p class="limited">0 / illimité</p>
-                <p class="large">Raclette, Kiri, Œuf, Boursin</p>
-            </div>
-            <div class="data">
-                <p class="limited underlined">Sauces</p>
-                <p class="limited">1 / 2</p>
-                <p class="large">Algérienne, Marocaine, Samouraï, Chili-Thaï</p>
+            <div class="data" *ngFor="let optionList of displaySku.option_list_ids; let i = index">
+                <p class="limited underlined" (click)="swichSku(i)">{{optionList.name}}</p>
+                <p class="limited">{{optionList.min_selections}} / {{optionList.max_selections}}</p>
+                <p class="large">
+                    <span *ngFor="let option of optionList.options; let last = last">
+                        {{ option.name }}{{ !last ? ',' : '' }}
+                    </span>
+                </p>
             </div>
         </div>
 

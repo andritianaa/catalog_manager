@@ -3,6 +3,7 @@ import { FormControl } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { ReplaySubject, Subject } from 'rxjs';
 import { take, takeUntil } from 'rxjs/operators';
+import { get_skus } from '../../../fakeData/skus'
 @Component({
   selector: 'app-search-select',
   templateUrl: './search-select.component.html',
@@ -11,13 +12,7 @@ import { take, takeUntil } from 'rxjs/operators';
 
 
 export class SearchSelectComponent implements OnInit, AfterViewInit {
-
-  websites = [
-    { id: '1', name: 'Viande (3 SKUs)' },
-    { id: '2', name: 'Viande (2 SKUs)' },
-    { id: '3', name: 'Sauces (35 SKUs)' },
-    { id: '4', name: 'dd' },
-  ];
+  data = get_skus
 
   public websiteMultiCtrl: FormControl = new FormControl();
   public websiteMultiFilterCtrl: FormControl = new FormControl();
@@ -28,8 +23,8 @@ export class SearchSelectComponent implements OnInit, AfterViewInit {
   protected _onDestroy = new Subject();
   constructor() { }
   ngOnInit() {
-    this.websiteMultiCtrl.setValue(this.websites[1]);
-    this.filteredWebsitesMulti.next(this.websites.slice());
+    this.websiteMultiCtrl.setValue(this.data[1]);
+    this.filteredWebsitesMulti.next(this.data.slice());
     this.websiteMultiFilterCtrl.valueChanges
       .pipe(takeUntil(this._onDestroy))
       .subscribe(() => this.filterWebsiteMulti());
@@ -38,16 +33,16 @@ export class SearchSelectComponent implements OnInit, AfterViewInit {
 
   protected setInitialValue() {
     this.filteredWebsitesMulti.pipe(take(1), takeUntil(this._onDestroy))
-      .subscribe(() => this.multiSelect.compareWith = (a: any, b: any) => a && b && a.id === b.id);
+      .subscribe(() => this.multiSelect.compareWith = (a: any, b: any) => a && b && a._id === b._id);
   }
   protected filterWebsiteMulti() {
-    if (!this.websites) return;
+    if (!this.data) return;
     let search = this.websiteMultiFilterCtrl.value;
     if (!search) {
-      this.filteredWebsitesMulti.next(this.websites.slice());
+      this.filteredWebsitesMulti.next(this.data.slice());
       return;
     } else search = search.toLowerCase();
-    this.filteredWebsitesMulti.next(this.websites.filter(bank => bank.name.toLowerCase().indexOf(search) > -1));
+    this.filteredWebsitesMulti.next(this.data.filter(bank => bank.name.toLowerCase().indexOf(search) > -1));
   }
 }
 

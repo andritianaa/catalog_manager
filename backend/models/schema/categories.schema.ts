@@ -8,7 +8,9 @@ const categorySchema = new Schema<ICategory>({
     tags: [{ type: String }],
     thumbnail: { type: String, require: true },
     sort: { type: Number, default: 1 },
-    afficher: { type: Boolean, default: true }
+    afficher: { type: Boolean, default: true },
+    products: [{ type: mongoose.Types.ObjectId, ref: 'products', default: [] }],
+
 })
 
 export const CategoryModel = mongoose.model('categories', categorySchema)

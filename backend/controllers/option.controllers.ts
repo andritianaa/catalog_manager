@@ -7,7 +7,7 @@ import { moneyConvertion } from '../utils/money.converter'
 
 export const create = async (req: Request, res: Response) => {
     const { price, afficher, defaultValue, tags, name, ref } = req.body
-    if (name && price) {
+    if (name && price != undefined) {
         const option: IOption = {
             name,
             price: moneyConvertion(price),

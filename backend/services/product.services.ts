@@ -2,6 +2,7 @@ import { TData, setData, status } from '../utils/response'
 import { IProduct } from '../models/products.model'
 import { ProductModel } from '../models/schema/product.schema'
 import { isRefExist } from '../utils/checkRef'
+import { CategoryModel } from '../models/schema/categories.schema';
 
 const dataI: TData = {
     message: "Data not yet processed",
@@ -11,11 +12,19 @@ const dataI: TData = {
 export const create = async (product: IProduct): Promise<TData> => {
     let data = { ...dataI }
     product.sort = await ProductModel.count({ category_id: product.category_id })
-    const newCategory = new ProductModel(product)
+    const newProduct = new ProductModel(product)
 
-    if (!await isRefExist(ProductModel, product.ref, newCategory._id.toString())) {
-        newCategory.save()
-        data = setData(status.success, 'Product created successfully', newCategory)
+    if (!await isRefExist(ProductModel, product.ref, newProduct._id.toString())) {
+        const category = await CategoryModel.findOne({ _id: product.category_id })
+        if (category) {
+            let currentCategoryProducts = category.products
+            currentCategoryProducts?.push(newProduct._id)
+            category.products = currentCategoryProducts
+            category.save()
+            newProduct.save()
+            data = setData(status.success, 'Product created successfully', newProduct)
+        } else data = setData(status.not_found, 'Category does not exist', {})
+
     } else data = setData(status.bad_request, 'Ref already used', {})
     return data
 }
@@ -97,7 +106,16 @@ export const get = async (category: string): Promise<TData> => {
         .sort({ sort: -1 })
         .populate({
             path: 'skus',
-            options: { sort: { sort: -1 } }
+            options: { sort: { sort: -1 } },
+            populate: {
+                path: 'option_list_ids',
+                options: { sort: { sort: -1 } },
+                populate: {
+                    path: 'options',
+                    options: { sort: { sort: -1 } }
+                }
+            }
+
         })
     data = setData(status.success, `Those are product in the category '${category}'`, product)
     return data

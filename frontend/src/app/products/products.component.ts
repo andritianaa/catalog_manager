@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, ElementRef, AfterViewInit, Renderer2 } from '@angular/core';
-import { productList } from '../../../fakeData/products';
+import { get_category } from '../../../fakeData/category';
+import { ICategory, IProduct, ISku } from '../../utils/types';
 
 @Component({
   selector: 'app-products',
@@ -8,28 +9,87 @@ import { productList } from '../../../fakeData/products';
 })
 export class ProductsComponent implements AfterViewInit {
   @Output() fileSelected = new EventEmitter<File>();
-  data = productList
+  data = get_category
   isCategory = false
   isDetail = false
   isAddSku = false
-  showCategory() {
+
+  displayCategory: ICategory = {
+    ref: "",
+    name: "",
+    description: "",
+    tags: [],
+    thumbnail: "",
+    sort: 0,
+    afficher: true,
+    products: [],
+    _id: ""
+  }
+
+  displayProduct: IProduct = {
+    ref: "",
+    category_id: "",
+    name: "",
+    description: "",
+    tags: [],
+    thumbnail: "",
+    skus: [],
+    sort: 0,
+    afficher: true,
+    _id: ""
+  }
+
+  displaySku: ISku = {
+    ref: "",
+    name: "",
+    price: "",
+    option_list_ids: [],
+    sort: 0,
+    afficher: true,
+    _id: ""
+  }
+
+
+  showCategory(category: ICategory) {
     this.isCategory = true
     this.isDetail = true
+    this.displayCategory = category
   }
-  showProduct() {
+
+  skuId = 0
+  swichSku(id: number) {
+    if (this.displayProduct.skus && this.displayProduct.skus[id]) {
+      this.displaySku = this.displayProduct.skus[id]
+    }
+  }
+  showProduct(product: any) {
+    this.skuId = 0
+    this.displaySku = {
+      ref: "",
+      name: "",
+      price: "",
+      option_list_ids: [],
+      sort: 0,
+      afficher: true,
+      _id: ""
+    }
     this.isCategory = false
     this.isDetail = true
+    this.displayProduct = product
+    if (!product.description) this.displayProduct.description = ""
+    if (this.displayProduct.skus && this.displayProduct.skus[this.skuId]) {
+      this.displaySku = this.displayProduct.skus[this.skuId]
+    }
   }
 
   showAddSku() {
     this.isAddSku = true
-    console.log(this.isAddSku);
-
   }
   hideAddSku() {
     this.isAddSku = false
   }
   hideDetail() {
+    this.skuId = 0
     this.isDetail = false
     const elements = this.elementRef.nativeElement.querySelectorAll('.active')
     elements.forEach((active: any) => active.classList.remove('active'))
@@ -107,3 +167,4 @@ export class ProductsComponent implements AfterViewInit {
     }
   }
 }
+
