@@ -3,12 +3,10 @@ POST http://127.0.0.1:8000/product/new
 Content-Type: application/json
 
 {
-    "category_id":"6489f5d3ba1f6515f0f42423",
-    "name":"Burger 4",
-    "description":"burger description",
-    "tags":["pain","viande"],
-    "skus":["6485d7c1d3c5a2eb8181e269","6485d7c1d3c5a2eb8181e269"],
+    "category_id":"648f23a353121a213dfe54e7",
+    "name":"Rosti chicken",
+    "skus":["648f2ead33bcaf9df1fef3ca"],
     "afficher": true,
-    "ref":"#444",
+    "ref":"Rosti chicken",
     "thumbnail":"https://picsum.photos/seed/picsum/200/300"
 }

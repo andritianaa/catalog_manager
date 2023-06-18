@@ -3,10 +3,9 @@ POST http://127.0.0.1:8000/optionList/new
 Content-Type: application/json
 
 {
-    "name":"Option 3",
-    "min_selections":0,
-    "max_selections":12,
-    "tags":["pain","viande"],
-    "options":["6489f92132e53d5a0a20dbf9","6489f95232e53d5a0a20dbfd"],
-    "ref":"#125"
+    "name":"Viandes",
+    "min_selections":1,
+    "max_selections":2,
+    "options":["648f2d0433bcaf9df1fef39b","648f2cfa33bcaf9df1fef397","648f2cef33bcaf9df1fef393","648f2ce633bcaf9df1fef38f","648f2cd833bcaf9df1fef38b","648f2cc833bcaf9df1fef387","648f2cab33bcaf9df1fef383"],
+    "ref":"viandes_part_2"
 }

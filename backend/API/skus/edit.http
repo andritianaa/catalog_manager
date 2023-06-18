@@ -5,7 +5,7 @@ Content-Type: application/json
 {
     "price":10,
     "afficher": true,
-    "option_list_ids":["6485d7c1d3c5a2eb8181e269","6485d7c1d3c5a2eb8181e269"],
+    "option_list_ids":["648f2ead33bcaf9df1fef3ca","6485d7c1d3c5a2eb8181e269"],
     "name":"burger",
     "ref":"#123",
     "id":"648a12ed23a7679599de986d

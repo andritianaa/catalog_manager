@@ -3,10 +3,9 @@ POST http://127.0.0.1:8000/category/new
 Content-Type: application/json
 
 {
-      "ref": "#456",
-      "name": "Sandwich",
-      "description": "sandwich description",
-      "tags": ["salade","sauce"],
+      "ref": "formules",
+      "name": "Formules",
+      "description": "Catégorie regroupant les formules",
       "thumbnail": "https://picsum.photos/seed/picsum/200/300",
       "afficher": true
 }

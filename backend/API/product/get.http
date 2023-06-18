@@ -1,2 +1,2 @@
 ### Get all category + products
-GET http://127.0.0.1:8000/product/get?category_id=6489f26861f822346f3bd514
+GET http://127.0.0.1:8000/product/get?category_id=648f238553121a213dfe54e3
