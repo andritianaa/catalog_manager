@@ -165,3 +165,12 @@ input[type="checkbox"] {
     max-width: 16px !important;
     max-height: 16px !important;
 }
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed !important;
+
+    &:hover {
+        background: none !important;
+    }
+}

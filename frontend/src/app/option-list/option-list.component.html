@@ -1,4 +1,4 @@
-<app-navbar-option></app-navbar-option>
+<app-navbar-option [isDeletePossible]="isDeletePossible"></app-navbar-option>
 <main>
     <div id="list">
 
@@ -14,7 +14,7 @@
     </div>
     <div id="detail" *ngIf="isDetail">
         <div class="head">
-            <div class="name">{{displayList.name}}</div>
+            <input type="text" class="name" name="" id="" [value]="displayList.name">
             <div class="icons">
                 <button><img src="/assets/icons/trash.svg" alt=""></button>
                 <button (click)="hideDetail()"><img src="/assets/icons/close.svg" alt=""></button>
@@ -23,8 +23,9 @@
         <div class="minMax">
             <label>Min. sélections</label>
             <label>Miax. sélections</label>
-            <p>{{displayList.min_selections}}</p>
-            <p>{{displayList.max_selections}}</p>
+            <input type="number" name="" id="" [value]="displayList.min_selections">
+            <input type="number" name="" id="" [value]="displayList.max_selections">
+
         </div>
         <div class="tableau">
             <div class="head">
@@ -35,13 +36,15 @@
                 <label class="short">Variantes</label>
                 <label class="short">Défaut</label>
             </div>
-            <div class="data" *ngFor="let option of displayList.options">
-                <p class="large">{{option.name}}</p>
-                <p class="short">{{option.price}}</p>
-                <p class="large">{{option.ref}}</p>
-                <input class="short" type="checkbox" name="" id="" [checked]="option.afficher">
+            <div class="data" *ngFor="let oneOption of displayList.options;  let i = index" draggable="true"
+                #oneOptionDiv (dragstart)="onDragStartOption($event, oneOption)" (dragover)="onDragOverOption($event)"
+                (drop)="onDropOption($event, oneOption, i)">
+                <p class="large">{{oneOption.name}}</p>
+                <p class="short">{{oneOption.price}}</p>
+                <p class="large">{{oneOption.ref}}</p>
+                <input class="short" type="checkbox" name="" id="" [checked]="oneOption.afficher">
                 <p class="short"></p>
-                <input class="short" type="checkbox" name="" id="" [checked]="option.default">
+                <input class="short" type="checkbox" name="" id="" [checked]="oneOption.default">
             </div>
         </div>
     </div>

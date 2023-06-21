@@ -1,4 +1,4 @@
-<app-navbar></app-navbar>
+<app-navbar [isDeletePossible]="isDeletePossible"></app-navbar>
 <main>
 
     <div id="list">
@@ -49,7 +49,7 @@
 
     <div *ngIf="!isCategory && isDetail" id="product">
         <div class="head">
-            <div class="name">Nom du produit</div>
+            <div class="name">{{displayProduct.name}}</div>
             <div class="icons">
                 <button> <img src="/assets/icons/eye.svg" alt="">
                 </button>
@@ -62,7 +62,8 @@
         <form action="">
             <label for="ref">Réference du produit</label>
             <input type="text" id="ref" placeholder="ex: #123" [value]="displayProduct.ref">
-
+            <label for="name">Nom</label>
+            <input type="text" id="name" placeholder="Tacos à composer" [value]="displayProduct.name">
             <label for="description">Description</label>
             <textarea rows="4" id="description" placeholder="Tacos à composer"
                 [value]="displayProduct.description"></textarea>

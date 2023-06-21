@@ -9,10 +9,13 @@
                 <img src="/assets/icons/add.svg" alt="">
                 <p>Nouvelle catégorie</p>
             </button>
-            <button class="option centerize">
+            <button *ngIf="isDeletePossible" class="option centerize">
                 <img src="/assets/icons/trash.svg" alt="">
                 <p>Supprimer</p>
-
+            </button>
+            <button *ngIf="!isDeletePossible" class="option centerize disabled">
+                <img src="/assets/icons/trash.svg" alt="">
+                <p>Supprimer</p>
             </button>
         </div>
         <div class="right">

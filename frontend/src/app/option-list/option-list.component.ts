@@ -10,7 +10,7 @@ import { IOption, IOptionList } from '../../utils/types';
 export class OptionListComponent implements AfterViewInit {
   dragged: any;
   dropSortNumber!: number;
-
+  isDeletePossible: boolean = false
   data = get_optionList
 
   displayList: IOptionList = {
@@ -29,6 +29,7 @@ export class OptionListComponent implements AfterViewInit {
     this.dragged = category;
     event.dataTransfer?.setData('text', '');
   }
+
   onDragOver(event: DragEvent) {
     event.preventDefault();
   }
@@ -44,10 +45,35 @@ export class OptionListComponent implements AfterViewInit {
     this.dragged = null;
   }
 
+
+  onDragStartOption(event: DragEvent, category: any) {
+    this.dragged = category;
+    event.dataTransfer?.setData('text', '');
+  }
+
+  onDragOverOption(event: DragEvent) {
+    event.preventDefault();
+  }
+  onDropOption(event: DragEvent, category: any, i: number) {
+    event.preventDefault();
+
+    this.dropSortNumber = this.displayList.options.indexOf(this.dragged)
+    const draggedIndex = this.displayList.options.indexOf(this.dragged)
+    const droppedIndex = this.displayList.options.indexOf(category);
+    if (draggedIndex > -1) {
+      this.displayList.options.splice(draggedIndex, 1);
+      this.displayList.options.splice(droppedIndex, 0, this.dragged);
+    }
+    this.dragged = null;
+  }
+
+
+
   isDetail = false
   showDetail(element: HTMLElement, list: IOptionList) {
     this.displayList = list
     this.isDetail = true;
+    this.isDeletePossible = true;
     const elements = this.elementRef.nativeElement.querySelectorAll('.option');
     elements.forEach((el: any) => {
       el.classList.remove('active');
@@ -58,6 +84,7 @@ export class OptionListComponent implements AfterViewInit {
 
   hideDetail() {
     this.isDetail = false;
+    this.isDeletePossible = false;
     const elements = this.elementRef.nativeElement.querySelectorAll('.active')
     elements.forEach((active: any) => active.classList.remove('active'))
   }

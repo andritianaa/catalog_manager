@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
   showNewProduct = false
   showNewCategory = false
+  @Input() isDeletePossible!: boolean;
   toggleNewProduct() { this.showNewProduct = !this.showNewProduct }
   toggleNewCategory() { this.showNewCategory = !this.showNewCategory }
 }

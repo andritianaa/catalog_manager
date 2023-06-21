@@ -13,7 +13,7 @@ export class ProductsComponent implements AfterViewInit {
   isCategory = false
   isDetail = false
   isAddSku = false
-
+  isDeletePossible: boolean = false
   displayCategory: ICategory = {
     ref: "",
     name: "",
@@ -52,6 +52,7 @@ export class ProductsComponent implements AfterViewInit {
 
   showCategory(category: ICategory) {
     this.isCategory = true
+    this.isDeletePossible = true
     this.isDetail = true
     this.displayCategory = category
   }
@@ -75,6 +76,7 @@ export class ProductsComponent implements AfterViewInit {
     }
     this.isCategory = false
     this.isDetail = true
+    this.isDeletePossible = true
     this.displayProduct = product
     if (!product.description) this.displayProduct.description = ""
     if (this.displayProduct.skus && this.displayProduct.skus[this.skuId]) {
@@ -91,6 +93,7 @@ export class ProductsComponent implements AfterViewInit {
   hideDetail() {
     this.skuId = 0
     this.isDetail = false
+    this.isDeletePossible = false
     const elements = this.elementRef.nativeElement.querySelectorAll('.active')
     elements.forEach((active: any) => active.classList.remove('active'))
   }
