@@ -81,6 +81,19 @@ export class OptionListComponent implements AfterViewInit {
     element.classList.add('active');
   }
 
+  newOption() {
+    this.displayList.options?.push({
+      ref: "",
+      name: "",
+      price: "0.00 EUR",
+      default: true,
+      tags: [],
+      sort: 0,
+      afficher: true,
+      _id: "",
+    })
+  }
+
 
   hideDetail() {
     this.isDetail = false;

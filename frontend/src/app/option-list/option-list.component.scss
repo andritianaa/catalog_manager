@@ -3,7 +3,7 @@ main {
 
     #list {
         width: 100vw;
-        max-width: 425px;
+        max-width: 350px;
         height: calc(100vh - 93px);
         max-height: calc(100vh - 93px);
         overflow-y: auto;
@@ -39,7 +39,7 @@ main {
 
 
     #detail {
-        max-width: 590px;
+        max-width: 675px;
         width: 100vw;
         background: white;
         border-radius: 4px;
@@ -50,8 +50,11 @@ main {
         padding: 16px;
 
         .head {
+            &.headList {
+                justify-content: space-between;
+            }
+
             display: flex;
-            justify-content: space-between;
             align-items: center;
             height: 24px;
             font-size: 16px;
@@ -99,11 +102,10 @@ main {
                 border-bottom: var(--border);
             }
 
-            .large {
-                width: 25%;
-                margin: 4px;
+            input[type="text"] {
                 font-size: 14px;
             }
+
 
             .short {
                 width: 12.5%;
@@ -117,8 +119,63 @@ main {
                 padding-top: 8px;
                 padding-bottom: 8px;
                 border-bottom: var(--border);
+                align-items: center;
+
+                input[type="text"] {
+                    border: none;
+                }
+
+                .icons {
+                    opacity: 0;
+                }
+
+                &:hover {
+                    .icons {
+                        opacity: 1;
+
+                    }
+                }
             }
 
+            .name {
+                width: 150px !important;
+            }
+
+            input.name {
+                width: 130px !important;
+                margin-right: 8px;
+            }
+
+            .ref {
+                width: 150px !important;
+            }
+
+            input.ref {
+                width: 130px !important;
+                margin-right: 8px;
+            }
+
+            .price {
+                width: 100px !important;
+            }
+
+            input.price {
+                width: 80px !important;
+                margin-right: 8px;
+            }
+
+            .small {
+                width: 75px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .drag {
+                margin-left: 4px;
+                height: 25px !important;
+                width: 25px !important;
+            }
         }
     }
 }
@@ -127,4 +184,33 @@ input {
     padding-top: 8px;
     padding-bottom: 8px;
     padding-left: 8px;
+}
+
+.block {
+    margin-top: 16px;
+    margin-bottom: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &.new {
+        height: 35px;
+        display: flex;
+        width: fit-content;
+        justify-content: start;
+        align-items: center;
+        cursor: pointer;
+        transition: ease all .2s;
+        padding-left: 8px;
+        padding-right: 16px;
+        border-radius: 4px;
+
+        p {
+            margin-bottom: 0;
+        }
+
+        &:hover {
+            background: #ededed;
+        }
+    }
 }

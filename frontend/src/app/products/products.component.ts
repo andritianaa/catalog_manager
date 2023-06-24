@@ -12,7 +12,7 @@ export class ProductsComponent implements AfterViewInit {
   data = get_category
   isCategory = false
   isDetail = false
-  isAddSku = false
+  isAddOptList = false
   isDeletePossible: boolean = false
   displayCategory: ICategory = {
     ref: "",
@@ -84,11 +84,11 @@ export class ProductsComponent implements AfterViewInit {
     }
   }
 
-  showAddSku() {
-    this.isAddSku = true
+  showAddOptList() {
+    this.isAddOptList = true
   }
-  hideAddSku() {
-    this.isAddSku = false
+  hideAddOptList() {
+    this.isAddOptList = false
   }
   hideDetail() {
     this.skuId = 0
@@ -168,6 +168,18 @@ export class ProductsComponent implements AfterViewInit {
         event.target.classList.add('active')
       });
     }
+  }
+
+  newSku() {
+    this.displayProduct.skus?.push({
+      ref: "",
+      name: "",
+      price: "0.00 EUR",
+      option_list_ids: [],
+      sort: 0,
+      afficher: true,
+      _id: ""
+    })
   }
 }
 

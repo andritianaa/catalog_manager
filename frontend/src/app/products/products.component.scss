@@ -3,7 +3,7 @@ main {
 
     #list {
         width: 100vw;
-        max-width: 425px;
+        max-width: 350px;
         height: calc(100vh - 93px);
         max-height: calc(100vh - 93px);
         overflow-y: auto;
@@ -40,7 +40,7 @@ main {
 
     #category,
     #product {
-        max-width: 590px;
+        max-width: 640px;
         width: 100vw;
         background: white;
         border-radius: 4px;
@@ -107,9 +107,14 @@ main {
         &.new {
             height: 35px;
             display: flex;
+            width: fit-content;
             justify-content: start;
             align-items: center;
             cursor: pointer;
+            transition: ease all .2s;
+            padding-left: 8px;
+            padding-right: 16px;
+            border-radius: 4px;
 
             img {
                 margin-right: 8px;
@@ -117,6 +122,10 @@ main {
 
             p {
                 margin-bottom: 0;
+            }
+
+            &:hover {
+                background: #ededed;
             }
         }
     }
@@ -161,15 +170,24 @@ input[type="checkbox"]+label {
     .data {
         padding: 8px 0;
         display: flex;
+        align-items: center;
         flex-direction: row;
         border-bottom: var(--border);
 
+        input.limited,
         p.limited {
-            width: 120px;
+            width: 90px;
+            margin-right: 8px;
+            padding: 8px;
+            border: none;
         }
 
         p.large {
             width: 300px;
+        }
+
+        .check {
+            margin-left: 16px;
         }
     }
 }

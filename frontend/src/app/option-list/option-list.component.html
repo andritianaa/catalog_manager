@@ -13,7 +13,7 @@
 
     </div>
     <div id="detail" *ngIf="isDetail">
-        <div class="head">
+        <div class="head headList">
             <input type="text" class="name" name="" id="" [value]="displayList.name">
             <div class="icons">
                 <button><img src="/assets/icons/trash.svg" alt=""></button>
@@ -29,23 +29,36 @@
         </div>
         <div class="tableau">
             <div class="head">
-                <label class="large">Nom</label>
-                <label class="short">Prix</label>
-                <label class="large">Code ref</label>
-                <label class="short">Activée</label>
-                <label class="short">Variantes</label>
-                <label class="short">Défaut</label>
+                <label class="name">Nom</label>
+                <label class="price">Prix</label>
+                <label class="ref">Code ref</label>
+                <label class="small">Activée</label>
+                <label class="small">Variantes</label>
+                <label class="small">Défaut</label>
             </div>
             <div class="data" *ngFor="let oneOption of displayList.options;  let i = index" draggable="true"
                 #oneOptionDiv (dragstart)="onDragStartOption($event, oneOption)" (dragover)="onDragOverOption($event)"
                 (drop)="onDropOption($event, oneOption, i)">
-                <p class="large">{{oneOption.name}}</p>
-                <p class="short">{{oneOption.price}}</p>
-                <p class="large">{{oneOption.ref}}</p>
-                <input class="short" type="checkbox" name="" id="" [checked]="oneOption.afficher">
-                <p class="short"></p>
-                <input class="short" type="checkbox" name="" id="" [checked]="oneOption.default">
+                <input class="name" type="text" value="{{oneOption.name}}">
+                <input class="price" type="text" value="{{oneOption.price}}">
+                <input class="ref" type="text" value="{{oneOption.ref}}">
+
+                <div class="small">
+                    <input type="checkbox" name="" id="" [checked]="oneOption.afficher">
+                </div>
+                <p class="small"></p>
+                <div class="small">
+                    <input type="checkbox" name="" id="" [checked]="oneOption.default">
+                </div>
+                <div class="small icons">
+                    <img src="/assets/icons/trash.svg" alt="">
+                    <img src="/assets/icons/drag.svg" class="drag" alt="">
+                </div>
             </div>
+        </div>
+        <div class="block new" (click)="newOption()">
+            <img src="/assets/icons/add.svg" alt="">
+            <p>Nouvelle option</p>
         </div>
     </div>
 </main>

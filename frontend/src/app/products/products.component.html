@@ -89,16 +89,15 @@
                 <label>Activée</label>
             </div>
             <div class="data" *ngFor="let sku of displayProduct.skus">
-                <p class="limited">{{sku.name}}</p>
-                <p class="limited">{{sku.price}}</p>
-                <p class="limited">{{sku.ref}}</p>
-                <input type="checkbox" name="" id="" [checked]="sku.afficher">
+                <input class="limited" type="text" name="" id="" value="{{sku.name}}">
+                <input class="limited" type="text" name="" id="" value="{{sku.price}}">
+                <input class="limited" type="text" name="" id="" value="{{sku.ref}}">
+                <input type="checkbox" name="" class="check" [checked]="sku.afficher">
             </div>
 
         </div>
-        <div class="block new">
+        <div class="block new" (click)="newSku()">
             <img src="/assets/icons/add.svg" alt="">
-
             <p>Nouvelle SKU</p>
         </div>
 
@@ -127,18 +126,18 @@
         </div>
 
 
-        <div class="block new" (click)="showAddSku()">
+        <div class="block new" (click)="showAddOptList()">
             <img src="/assets/icons/add.svg" alt="">
 
             <p for="isMultipleSku">Associer une liste d'option</p>
         </div>
     </div>
 </main>
-<div *ngIf="isAddSku" class="add">
+<div *ngIf="isAddOptList" class="add">
     <div class="card">
         <div class="head">
             <p>Nom du produit</p>
-            <img src="/assets/icons/close.svg" (click)="hideAddSku()" alt="">
+            <img src="/assets/icons/close.svg" (click)="hideAddOptList()" alt="">
 
         </div>
         <form class="input">
@@ -146,8 +145,8 @@
             <app-search-select></app-search-select>
         </form>
         <div class="validation">
-            <button class="green" (click)="hideAddSku()">Créer</button>
-            <button (click)="hideAddSku()">Annuler</button>
+            <button class="green" (click)="hideAddOptList()">Créer</button>
+            <button (click)="hideAddOptList()">Annuler</button>
         </div>
     </div>
 </div>
